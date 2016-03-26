@@ -13,7 +13,7 @@ module Pombo
   # @option config [Symbol]  :logger object to trigger messages (defaults to `:logger`)
   #
   # @example
-  #   Pombo::Configuration.setup do |config|
+  #   Pombo.setup do |config|
   #     config.contract_code = 'AA99BB'
   #     config.password = '999999'
   #     config.extends_delivery = 0
