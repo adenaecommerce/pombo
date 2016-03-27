@@ -8,7 +8,7 @@ describe Pombo do
   end
 
   describe 'API' do
-    %i[setup configure shipping delivery_time shipping_value].each do |method|
+    %i[setup set configurations shipping delivery_time shipping_value].each do |method|
       it "should respond to .#{ method }" do
         is_expected.to respond_to method
       end
@@ -31,6 +31,20 @@ describe Pombo do
 
     it 'throw exception if not past a block' do
       expect{ subject.setup }.to  raise_error Pombo::ConfigurationError
+    end
+  end
+
+  describe '.set' do
+    it 'returns the configuration object' do
+      expect(subject.set(contract_code: 'something', password: 'something')).to be_a Pombo::Configuration
+    end
+
+    it 'change the current object settings' do
+      expect{ subject.set(contract_code: 'something', password: 'something') }.to change{ subject.configurations }
+    end
+
+    it 'does not change the default settings' do
+      expect{ subject.set(contract_code: 'something', password: 'something') }.not_to change{ Pombo::Configuration.default }
     end
   end
 
