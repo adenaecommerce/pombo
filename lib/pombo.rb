@@ -25,8 +25,17 @@ module Pombo
     Configuration.setup(&block)
   end
 
-  def self.configure(**args)
+  # Tells the settings that will be used at this time
+  # @note Does not modify the default settings
+  # @options (see .setup)
+  # @return [Pombo::Configuration] current settings
+  def self.set(**args)
+    @configurations = Configuration.new args
+  end
 
+  # @return [Pombo::Configuration] current settings
+  def self.configurations
+    @configurations ||= Configuration.new
   end
 
   def self.shipping(service_code, package)
