@@ -7,11 +7,21 @@ describe Pombo::Package::Item do
     end
   end
 
-  shared_examples 'calculate_volume' do |format_title, format, result|
+  shared_examples 'calculate_volume' do |format_title, format, quantity, result|
     it "calculates the volume to the #{ format_title } format" do
       subject.format = format
       expect(subject.volume).to equal(result)
     end
+
+    it "calculates the volume to the #{ format_title } format with the amount iqual #{ quantity }" do
+      subject.format = format
+      subject.quantity = quantity
+      expect(subject.volume).to equal(result * quantity)
+    end
+  end
+
+  describe '#quantity' do
+    include_examples 'default_value', :quantity, 1
   end
 
   describe '#weight' do
@@ -45,10 +55,10 @@ describe Pombo::Package::Item do
   describe '#volume' do
     subject { Pombo::Package::Item.new weight: 10, length: 15, height: 5, width: 10, diameter: 8 }
 
-    include_examples 'calculate_volume', 'package', Pombo::Package::Format::PACKAGE, 750.0
+    include_examples 'calculate_volume', 'package', Pombo::Package::Format::PACKAGE, 2, 750.0
 
-    include_examples 'calculate_volume', 'roll', Pombo::Package::Format::ROLL, 251.33
+    include_examples 'calculate_volume', 'roll', Pombo::Package::Format::ROLL, 2, 251.33
 
-    include_examples 'calculate_volume', 'envelope', Pombo::Package::Format::ENVELOPE, 0
+    include_examples 'calculate_volume', 'envelope', Pombo::Package::Format::ENVELOPE, 2, 0
   end
 end

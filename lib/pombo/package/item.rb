@@ -1,10 +1,10 @@
 module Pombo
   class Package::Item
-    attr_accessor :weight, :length, :height, :width, :diameter
+    attr_accessor :weight, :length, :height, :width, :diameter, :quantity
     attr_reader :format
 
     def initialize(**args)
-      args = { weight: 0.0, length: 0.0, height: 0.0, width: 0.0, diameter: 0.0, format: Pombo::Package::Format::PACKAGE }.merge(args)
+      args = { weight: 0.0, length: 0.0, height: 0.0, width: 0.0, diameter: 0.0, quantity: 1, format: Pombo::Package::Format::PACKAGE }.merge(args)
       args.each { |key, value| __send__("#{ key }=", value) }
     end
 
@@ -17,9 +17,9 @@ module Pombo
     def volume
       case format
       when Pombo::Package::Format::PACKAGE
-        package_volume
+        package_volume * quantity
       when Pombo::Package::Format::ROLL
-        roll_volume
+        roll_volume * quantity
       when Pombo::Package::Format::ENVELOPE
         0
       end
