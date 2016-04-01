@@ -40,13 +40,13 @@ module Pombo
     end
 
     def diameter
-      return @items.first.diameter if @items.size == 1 && format == Pombo::Package::Format::ROLL
+      return @items.first.diameter if @items.size == 1 && format == Pombo::Package::Format::Roll::CODE
       0
     end
 
     def format
       return @items.first.format if @items.size == 1
-      Pombo::Package::Format::PACKAGE
+      Pombo::Package::Format::Box::CODE
     end
 
     def volume
