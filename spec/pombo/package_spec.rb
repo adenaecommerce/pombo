@@ -46,20 +46,20 @@ describe Pombo::Package do
 
   describe '#diameter' do
     it 'returns zero if the package contains more than one item' do
-      subject.add_item format: Pombo::Package::Format::ROLL, diameter: 5
-      subject.add_item format: Pombo::Package::Format::ROLL, diameter: 5
+      subject.add_item format: Pombo::Package::Format::Roll::CODE, diameter: 5
+      subject.add_item format: Pombo::Package::Format::Roll::CODE, diameter: 5
 
       expect(subject.diameter).to equal(0)
     end
 
     it 'returns zero if the only item was not roll' do
-      subject.add_item format: Pombo::Package::Format::PACKAGE, diameter: 5
+      subject.add_item format: Pombo::Package::Format::Box::CODE, diameter: 5
 
       expect(subject.diameter).to equal(0)
     end
 
     it 'returns the diameter of the single item with roll format' do
-      subject.add_item format: Pombo::Package::Format::ROLL, diameter: 5
+      subject.add_item format: Pombo::Package::Format::Roll::CODE, diameter: 5
 
       expect(subject.diameter).to equal(5)
     end
@@ -67,16 +67,16 @@ describe Pombo::Package do
 
   describe '#format' do
     it 'returns package format if the package contains more than one item' do
-      subject.add_item format: Pombo::Package::Format::ROLL
-      subject.add_item format: Pombo::Package::Format::ROLL
+      subject.add_item format: Pombo::Package::Format::Roll::CODE
+      subject.add_item format: Pombo::Package::Format::Roll::CODE
 
-      expect(subject.format).to equal(Pombo::Package::Format::PACKAGE)
+      expect(subject.format).to equal(Pombo::Package::Format::Box::CODE)
     end
 
     it 'returns the item format if the package contains only one item' do
-      subject.add_item format: Pombo::Package::Format::ROLL
+      subject.add_item format: Pombo::Package::Format::Roll::CODE
 
-      expect(subject.format).to equal(Pombo::Package::Format::ROLL)
+      expect(subject.format).to equal(Pombo::Package::Format::Roll::CODE)
     end
   end
 
