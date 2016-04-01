@@ -1,6 +1,10 @@
 require 'pombo/version'
 require 'pombo/configuration'
 require 'pombo/exception'
+require 'pombo/support'
+require 'pombo/package'
+require 'pombo/package/item'
+require 'pombo/package/format'
 
 module Pombo
   # Inform settings for persisting with default
@@ -30,15 +34,17 @@ module Pombo
   # @options (see .setup)
   # @return [Pombo::Configuration] current settings
   def self.set(**args)
-    @configurations = Configuration.new args
+    @@configurations = Configuration.new args
   end
 
   # @return [Pombo::Configuration] current settings
   def self.configurations
-    @configurations ||= Configuration.new
+    @@configurations ||= Configuration.new
   end
 
   def self.shipping(service_code, package)
+    ws = Webservice::CPP.new(Pombo.configurations)
+    ws.shipping(service_code, package)
   end
 
   def self.delivery_time(service_code, package)
