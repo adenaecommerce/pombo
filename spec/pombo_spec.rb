@@ -8,7 +8,7 @@ describe Pombo do
   end
 
   describe 'API' do
-    %i[setup set configurations shipping delivery_time shipping_value].each do |method|
+    %i[setup set configuration shipping delivery_time shipping_value].each do |method|
       it "should respond to .#{ method }" do
         is_expected.to respond_to method
       end
@@ -40,7 +40,7 @@ describe Pombo do
     end
 
     it 'change the current object settings' do
-      expect{ subject.set(contract_code: 'something', password: 'something') }.to change{ subject.configurations }
+      expect{ subject.set(contract_code: 'something', password: 'something') }.to change{ subject.configuration }
     end
 
     it 'does not change the default settings' do
