@@ -2,6 +2,7 @@ require 'pombo/version'
 require 'pombo/configuration'
 require 'pombo/exception'
 require 'pombo/support'
+require 'pombo/services'
 require 'pombo/package'
 require 'pombo/package/item'
 require 'pombo/package/format'
@@ -34,17 +35,18 @@ module Pombo
   # @options (see .setup)
   # @return [Pombo::Configuration] current settings
   def self.set(**args)
-    @@configurations = Configuration.new args
+    @@configuration = Configuration.new args
   end
 
   # @return [Pombo::Configuration] current settings
-  def self.configurations
-    @@configurations ||= Configuration.new
+  def self.configuration
+    @@configuration ||= Configuration.new
   end
 
-  def self.shipping(service_code, package)
-    ws = Webservice::CPP.new(Pombo.configurations)
-    ws.shipping(service_code, package)
+  def self.shipping(services, package)
+    @@configurations.current_service = service
+    ws = Webservice::CPP.new(@@configurations)
+    ws.shipping(package)
   end
 
   def self.delivery_time(service_code, package)
@@ -52,5 +54,4 @@ module Pombo
 
   def self.shipping_value(service_code, package)
   end
-
 end
