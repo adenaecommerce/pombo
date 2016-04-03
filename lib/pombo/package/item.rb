@@ -4,23 +4,23 @@ module Pombo
     attr_reader :format
 
     def initialize(**args)
-      args = { weight: 0.0, length: 0.0, height: 0.0, width: 0.0, diameter: 0.0, quantity: 1, format: Pombo::Package::Format::Box::CODE }.merge(args)
+      args = { weight: 0.0, length: 0.0, height: 0.0, width: 0.0, diameter: 0.0, quantity: 1, format: Pombo::Package::Format.find(:box).code }.merge(args)
       args.each { |key, value| __send__("#{ key }=", value) }
     end
 
     def format=(value)
-      formats = [Pombo::Package::Format::Box::CODE, Pombo::Package::Format::Roll::CODE, Pombo::Package::Format::Envelope::CODE]
+      formats = Pombo::Package::Format.all.map(&:code)
       raise TypeError, "no implicit conversion of #{ value } into item format" unless formats.include?(value)
       @format = value
     end
 
     def volume
       case format
-      when Pombo::Package::Format::Box::CODE
+      when Pombo::Package::Format.find(:box).code
         package_volume * quantity
-      when Pombo::Package::Format::Roll::CODE
+      when Pombo::Package::Format.find(:roll).code
         roll_volume * quantity
-      when Pombo::Package::Format::Envelope::CODE
+      when Pombo::Package::Format.find(:envelope).code
         0
       end
     end

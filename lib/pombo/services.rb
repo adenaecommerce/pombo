@@ -34,11 +34,11 @@ module Pombo
 
     def self.all(service = nil)
       case service
-      when :pac, 'pac'
+      when :pac
         @@all_pac.values
-      when :sedex, 'sedex'
+      when :sedex
         @@all_sedex.values
-      when :e_sedex, 'e_sedex'
+      when :e_sedex
         @@all_e_sedex.values
       else
         @@all_pac.values + @@all_sedex.values + @@all_e_sedex.values

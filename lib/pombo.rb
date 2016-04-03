@@ -43,8 +43,8 @@ module Pombo
     @@configuration ||= Configuration.new
   end
 
-  def self.shipping(services, package)
-    @@configurations.current_service = service
+  def self.shipping(service_codes, package)
+    @@configurations.current_services = service
     ws = Webservice::CPP.new(@@configurations)
     ws.shipping(package)
   end

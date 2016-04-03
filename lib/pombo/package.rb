@@ -40,17 +40,21 @@ module Pombo
     end
 
     def diameter
-      return @items.first.diameter if @items.size == 1 && format == Pombo::Package::Format::Roll::CODE
+      return @items.first.diameter if single_item? && format == Pombo::Package::Format.find(:roll).code
       0
     end
 
     def format
-      return @items.first.format if @items.size == 1
-      Pombo::Package::Format::Box::CODE
+      return @items.first.format if single_item?
+      Pombo::Package::Format.find(:box).code
     end
 
     def volume
       @items.inject(0) { |sum, item| sum += item.volume }
+    end
+
+    def single_item?
+      @items.size == 1 && @items.first.quantity == 1
     end
 
     private

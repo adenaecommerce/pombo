@@ -45,7 +45,7 @@ describe Pombo::Package::Item do
   end
 
   describe '#format' do
-    include_examples 'default_value', :format, Pombo::Package::Format::Box::CODE
+    include_examples 'default_value', :format, Pombo::Package::Format.find(:box).code
 
     it 'throw exception if the format is not supported' do
       expect{ subject.format = 3434324234 }.to raise_error(TypeError)
@@ -55,10 +55,10 @@ describe Pombo::Package::Item do
   describe '#volume' do
     subject { Pombo::Package::Item.new weight: 10, length: 15, height: 5, width: 10, diameter: 8 }
 
-    include_examples 'calculate_volume', 'package', Pombo::Package::Format::Box::CODE, 2, 750.0
+    include_examples 'calculate_volume', 'package', Pombo::Package::Format.find(:box).code, 2, 750.0
 
-    include_examples 'calculate_volume', 'roll', Pombo::Package::Format::Roll::CODE, 2, 251.33
+    include_examples 'calculate_volume', 'roll', Pombo::Package::Format.find(:roll).code, 2, 251.33
 
-    include_examples 'calculate_volume', 'envelope', Pombo::Package::Format::Envelope::CODE, 2, 0
+    include_examples 'calculate_volume', 'envelope', Pombo::Package::Format.find(:envelope).code, 2, 0
   end
 end
