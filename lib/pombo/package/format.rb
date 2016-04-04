@@ -2,9 +2,9 @@ module Pombo
   class Package
     module Format
       @@all_formats = {
-        '1' => OpenStruct.new(code: "1", name: 'Caixa/Pacote', max_length: 105, min_length: 16, max_height: 105, min_height: 2, max_width: 105, min_width: 11, max_dimension: 200),
-        '2' => OpenStruct.new(code: "2", name: 'Rolo/Prisma', max_length: 105, min_length: 18, max_diameter: 91, min_diameter: 5, max_dimension: 200),
-        '3' => OpenStruct.new(code: "3", name: 'Envelope', max_length: 60, min_length: 16, max_width: 60, min_width: 11, max_weight: 1),
+        '1' => OpenStruct.new(code: 1, name: 'Caixa/Pacote', max_length: 105, min_length: 16, max_height: 105, min_height: 2, max_width: 105, min_width: 11, max_dimension: 200),
+        '2' => OpenStruct.new(code: 2, name: 'Rolo/Prisma', max_length: 105, min_length: 18, max_diameter: 91, min_diameter: 5, max_dimension: 200),
+        '3' => OpenStruct.new(code: 3, name: 'Envelope', max_length: 60, min_length: 16, max_width: 60, min_width: 11, max_weight: 1),
       }
 
       def self.all
