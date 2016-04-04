@@ -1,17 +1,17 @@
 module Pombo
   class Package
-    attr_accessor :destination_zip_code, :origin_zip_code
-    attr_reader :items, :length, :height, :width
+    attr_accessor :destination_zip_code, :origin_zip_code, :declared_value
+    attr_reader :items, :length, :height, :width, :services
 
     def initialize
-      { items: [], length: 0, height: 0, width: 0 }.each { |key, value| instance_variable_set("@#{ key }", value) }
+      { items: [], length: 0, height: 0, width: 0, declared_value: 0 }.each { |key, value| instance_variable_set("@#{ key }", value) }
     end
 
-    %i[in_hand declared_value delivery_notice].each do |method|
+    %i[in_hand delivery_notice].each do |method|
       define_method("#{ method }?"){ instance_variable_get "@#{ method }" }
     end
 
-    %i[in_hand declared_value delivery_notice].each do |method|
+    %i[in_hand delivery_notice].each do |method|
       define_method("#{ method }=") do |value|
         if Pombo::Support::TRUE_VALUES.include? value
           instance_variable_set "@#{ method }", true
@@ -21,6 +21,10 @@ module Pombo
           raise TypeError, "no implicit conversion of #{ value } into True or False"
         end
       end
+    end
+
+    def services=(services)
+      @services = services.kind_of?(Array) ? services : [services]
     end
 
     def add_item(item = nil, **args)
