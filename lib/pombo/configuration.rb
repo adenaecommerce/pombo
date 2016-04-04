@@ -12,6 +12,7 @@ module Pombo
     attr_accessor :contract_code, :password, :extends_delivery, :log_level, :logger, :request_timeout
 
     def initialize(**args)
+      args = @@default.merge(args)
       args.each { |key, value| __send__("#{ key }=", value) }
     end
 
@@ -39,6 +40,5 @@ module Pombo
     def self.default
       @@default
     end
-
   end
 end
