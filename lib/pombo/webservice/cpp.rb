@@ -13,9 +13,15 @@ module Pombo
       end
 
       def self.delivery_time(package)
+        url = "#{ URL }/CalcPrazo"
+        response = Response.new get(url, DeliveryTimeRequest.new(package))
+        response.body
       end
 
-      def self.shipping_value(service_code, package)
+      def self.shipping_value(package)
+        url = "#{ URL }/CalcPreco"
+        response = Response.new get(url, ShippingValueRequest.new(package))
+        response.body
       end
     end
   end

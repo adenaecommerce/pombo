@@ -56,7 +56,21 @@ describe Pombo do
 
       Pombo.shipping package
     end
-
   end
 
+  describe '.delivery_time' do
+    it 'uses the webservice CPP to calculate' do
+      expect(Pombo::Webservice::CPP).to receive(:delivery_time).with(package)
+
+      Pombo.delivery_time package
+    end
+  end
+
+  describe '.shipping_value' do
+    it 'uses the webservice CPP to calculate' do
+      expect(Pombo::Webservice::CPP).to receive(:shipping_value).with(package)
+
+      Pombo.shipping_value package
+    end
+  end
 end

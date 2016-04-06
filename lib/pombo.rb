@@ -55,9 +55,11 @@ module Pombo
     Webservice::CPP.shipping(package)
   end
 
-  def self.delivery_time(service_code, package)
+  def self.delivery_time(package)
+    Webservice::CPP.delivery_time(package)
   end
 
-  def self.shipping_value(service_code, package)
+  def self.shipping_value(package)
+    Webservice::CPP.shipping_value(package)
   end
 end
