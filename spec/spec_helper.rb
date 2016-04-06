@@ -31,8 +31,8 @@ end
 
 def shipping_hash(package)
   {
-    nCdEmpresa: Pombo.configurations.contract_code,
-    sDsSenha: Pombo.configurations.password,
+    nCdEmpresa: Pombo.configurations.contract_code.to_s,
+    sDsSenha: Pombo.configurations.password.to_s,
     nCdServico: package.services.join(','),
     sCepOrigem: package.origin_zip_code,
     sCepDestino: package.destination_zip_code,
@@ -58,8 +58,8 @@ end
 
 def shipping_value_hash(package)
   {
-    nCdEmpresa: Pombo.configurations.contract_code,
-    sDsSenha: Pombo.configurations.password,
+    nCdEmpresa: Pombo.configurations.contract_code.to_s,
+    sDsSenha: Pombo.configurations.password.to_s,
     nCdServico: package.services.join(','),
     sCepOrigem: package.origin_zip_code,
     sCepDestino: package.destination_zip_code,
