@@ -6,6 +6,10 @@ require 'pombo/services'
 require 'pombo/package'
 require 'pombo/package/item'
 require 'pombo/package/format'
+require 'pombo/webservice/base'
+require 'pombo/webservice/cpp'
+require 'pombo/webservice/cpp/service'
+require 'pombo/webservice/cpp/response'
 
 module Pombo
   # Inform settings for persisting with default
@@ -43,8 +47,7 @@ module Pombo
     @@configuration ||= Configuration.new
   end
 
-  def self.shipping(service_codes, package)
-    @@configurations.current_services = service
+  def self.shipping(package)
     ws = Webservice::CPP.new(@@configurations)
     ws.shipping(package)
   end

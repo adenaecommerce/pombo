@@ -6,12 +6,9 @@ module Pombo
       HOST     = 'ws.correios.com.br'
       URL      = "#{ PROTOCOL }://#{ HOST }/calculador/CalcPrecoPrazo.asmx"
 
-      def initialize(configurations)
-        @configurations = configurations
-      end
-
       def shipping(package)
-        response = Response.new get(URL, parse_shipping(package))
+        url = "#{ URL }/CalcPrecoPrazo"
+        response = Response.new get(url, parse_shipping(package))
         response.body
       end
 
@@ -36,9 +33,9 @@ module Pombo
           nVlAltura: package.height,
           nVlLargura: package.width,
           nVlDiametro: package.diameter,
-          sCdMaoPropria: boolean_values(package.in_hand?),
+          sCdMaoPropria: Pombo::Support.boolean_to_string(package.in_hand?),
           nVlValorDeclarado: package.declared_value,
-          sCdAvisoRecebimento: boolean_values(package.delivery_notice?)
+          sCdAvisoRecebimento: Pombo::Support.boolean_to_string(package.delivery_notice?)
         }
       end
 
@@ -46,10 +43,6 @@ module Pombo
       end
 
       def parse_shipping_value(package)
-      end
-
-      def boolean_values(value)
-        value ? 'S' : 'N'
       end
     end
   end

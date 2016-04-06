@@ -11,12 +11,23 @@ describe Pombo::Support do
   end
 
   describe '.str_real_to_float' do
-    it 'convert real string to float' do
+    it 'converts real string to float' do
       expect(subject.str_real_to_float('2,99')).to eq(2.99)
     end
 
     it 'throw exception if the value is not string' do
       expect { subject.str_real_to_float(2) }.to raise_error TypeError
+    end
+  end
+
+
+  describe '.boolean_to_string' do
+    it 'converts True to S' do
+      expect(subject.boolean_to_string(true)).to eq('S')
+    end
+
+    it 'converts False to N' do
+      expect(subject.boolean_to_string(false)).to eq('N')
     end
   end
 

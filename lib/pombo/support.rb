@@ -7,5 +7,9 @@ module Pombo
       raise TypeError, "no implicit conversion of #{ value.class.name } into String" unless value.kind_of? String
       value.gsub(',','.').to_f
     end
+
+    def self.boolean_to_string(value)
+      value ? 'S' : 'N'
+    end
   end
 end

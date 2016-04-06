@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<cResultado xmlns="http://tempuri.org/">
+  <Servicos>
+    <cServico>
+      <Codigo>A9999</Codigo>
+      <Valor>99,99</Valor>
+      <PrazoEntrega>1</PrazoEntrega>
+      <ValorMaoPropria>9,99</ValorMaoPropria>
+      <ValorAvisoRecebimento>9,99</ValorAvisoRecebimento>
+      <ValorValorDeclarado>9</ValorValorDeclarado>
+      <EntregaDomiciliar>S</EntregaDomiciliar>
+      <EntregaSabado>N</EntregaSabado>
+      <Erro>0</Erro>
+      <MsgErro/>
+      <ValorSemAdicionais>99,99</ValorSemAdicionais>
+      <obsFim>Test A</obsFim>
+    </cServico>
+  </Servicos>
+</cResultado>

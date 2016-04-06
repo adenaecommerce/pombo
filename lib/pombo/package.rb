@@ -3,8 +3,10 @@ module Pombo
     attr_accessor :destination_zip_code, :origin_zip_code, :declared_value
     attr_reader :items, :length, :height, :width, :services
 
-    def initialize
-      { items: [], length: 0, height: 0, width: 0, declared_value: 0 }.each { |key, value| instance_variable_set("@#{ key }", value) }
+    def initialize(**args)
+      { items: [], length: 0, height: 0, width: 0 }.each { |key, value| instance_variable_set("@#{ key }", value) }
+      args = { declared_value: 0 }.merge(args)
+      args.each { |key, value| __send__("#{ key }=", value) }
     end
 
     %i[in_hand delivery_notice].each do |method|
