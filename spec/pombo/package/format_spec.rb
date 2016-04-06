@@ -1,35 +1,41 @@
 require 'spec_helper'
 
-shared_examples 'constant_value' do |name, value|
-  it "contains the constant #{ name } equal to #{ value }" do
-    expect(described_class.const_get(name)).to equal value
+describe Pombo::Package::Format do
+  describe ".all" do
+    it 'returns an array of formats' do
+      expect(subject.all).to be_an(Array)
+    end
+
+    it 'returns all formats' do
+      expect(subject.all.size).to eq(3)
+    end
   end
-end
 
-describe Pombo::Package::Format::Box do
-  include_examples 'constant_value', :CODE, 1
-  include_examples 'constant_value', :MAX_LENGTH, 105
-  include_examples 'constant_value', :MIN_LENGTH, 16
-  include_examples 'constant_value', :MAX_HEIGHT, 105
-  include_examples 'constant_value', :MIN_HEIGHT, 2
-  include_examples 'constant_value', :MAX_WIDTH, 105
-  include_examples 'constant_value', :MIN_WIDTH, 11
-  include_examples 'constant_value', :MAX_DIMENSION, 200
-end
+  describe '.find' do
+    it 'returns the format to the related code' do
+      expect(subject.find('1').code).to eq(1)
+    end
 
-describe Pombo::Package::Format::Roll do
-  include_examples 'constant_value', :CODE, 2
-  include_examples 'constant_value', :MAX_LENGTH, 105
-  include_examples 'constant_value', :MIN_LENGTH, 18
-  include_examples 'constant_value', :MAX_DIAMETER, 91
-  include_examples 'constant_value', :MIN_DIAMETER, 5
-  include_examples 'constant_value', :MAX_DIMENSION, 200
-end
+    context 'when a format is informed' do
+      it 'returns the Box' do
+        expect(subject.find(:box).code).to eq(1)
+      end
 
-describe Pombo::Package::Format::Envelope do
-  include_examples 'constant_value', :CODE, 3
-  include_examples 'constant_value', :MAX_LENGTH, 60
-  include_examples 'constant_value', :MIN_LENGTH, 16
-  include_examples 'constant_value', :MAX_WIDTH, 60
-  include_examples 'constant_value', :MIN_WIDTH, 11
+      it 'returns the Package' do
+        expect(subject.find(:package).code).to eq(1)
+      end
+
+      it 'returns the Roll' do
+        expect(subject.find(:roll).code).to eq(2)
+      end
+
+      it 'returns the Prism' do
+        expect(subject.find(:prism).code).to eq(2)
+      end
+
+      it 'returns the Envelope' do
+        expect(subject.find(:envelope).code).to eq(3)
+      end
+    end
+  end
 end

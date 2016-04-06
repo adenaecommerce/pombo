@@ -1,35 +1,25 @@
 module Pombo
   class Package
     module Format
-      # Box or Package
-      module Box
-        CODE          = 1
-        MAX_LENGTH    = 105
-        MIN_LENGTH    = 16
-        MAX_HEIGHT    = 105
-        MIN_HEIGHT    = 2
-        MAX_WIDTH     = 105
-        MIN_WIDTH     = 11
-        MAX_DIMENSION = 200
+      @@all_formats = {
+        '1' => OpenStruct.new(code: 1, name: 'Caixa/Pacote', max_length: 105, min_length: 16, max_height: 105, min_height: 2, max_width: 105, min_width: 11, max_dimension: 200),
+        '2' => OpenStruct.new(code: 2, name: 'Rolo/Prisma', max_length: 105, min_length: 18, max_diameter: 91, min_diameter: 5, max_dimension: 200),
+        '3' => OpenStruct.new(code: 3, name: 'Envelope', max_length: 60, min_length: 16, max_width: 60, min_width: 11, max_weight: 1),
+      }
+
+      def self.all
+        @@all_formats.values
       end
 
-      # Roll or Prism
-      module Roll
-        CODE          = 2
-        MAX_LENGTH    = 105
-        MIN_LENGTH    = 18
-        MAX_DIAMETER  = 91
-        MIN_DIAMETER  = 5
-        MAX_DIMENSION = 200
-      end
-
-      # Envelope
-      module Envelope
-        CODE          = 3
-        MAX_LENGTH    = 60
-        MIN_LENGTH    = 16
-        MAX_WIDTH     = 60
-        MIN_WIDTH     = 11
+      def self.find(code)
+        case code.to_s
+        when '1', 'box', 'package'
+          @@all_formats.values_at('1').first
+        when '2', 'roll', 'prism'
+          @@all_formats.values_at('2').first
+        when '3', 'envelope'
+          @@all_formats.values_at('3').first
+        end
       end
     end
   end

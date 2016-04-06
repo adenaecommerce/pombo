@@ -3,6 +3,8 @@ require 'pombo'
 require 'pry'
 require 'webmock/rspec'
 
+WebMock.disable_net_connect!
+
 shared_examples 'configuration_data' do
   let(:default_options) do
     {
