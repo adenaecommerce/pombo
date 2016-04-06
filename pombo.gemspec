@@ -7,7 +7,7 @@ Gem::Specification.new do |spec|
   spec.name          = "pombo"
   spec.version       = Pombo::VERSION
   spec.authors       = ["Leandro Nunes"]
-  spec.email         = ["leandro@adena.com"]
+  spec.email         = ["leandronunes.dev@gmail.com"]
 
   spec.summary       = %q{Gem to manage the shipping packages using the webservice of the Correios}
   spec.description   = spec.summary
