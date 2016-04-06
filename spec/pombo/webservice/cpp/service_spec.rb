@@ -1,24 +1,7 @@
 require 'spec_helper'
 
 describe Pombo::Webservice::CPP::Service do
-  let(:xml_text) do
-    %Q{
-      <cServico>
-        <Codigo>A9999</Codigo>
-        <Valor>99,99</Valor>
-        <PrazoEntrega>1</PrazoEntrega>
-        <ValorMaoPropria>9,99</ValorMaoPropria>
-        <ValorAvisoRecebimento>9,99</ValorAvisoRecebimento>
-        <ValorValorDeclarado>9</ValorValorDeclarado>
-        <EntregaDomiciliar>S</EntregaDomiciliar>
-        <EntregaSabado>N</EntregaSabado>
-        <Erro>0</Erro>
-        <MsgErro/>
-        <ValorSemAdicionais>99,99</ValorSemAdicionais>
-        <obsFim>Test A</obsFim>
-      </cServico>
-    }
-  end
+  let(:xml_text){ File.read('spec/support/cpp_shipping_response1.xml') }
 
   describe 'API' do
     %i[code value delivery_time value_in_hand value_declared_value value_without_additions

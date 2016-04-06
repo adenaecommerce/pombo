@@ -5,15 +5,11 @@ module Pombo
   module Webservice
     class Base
 
-      def initialize(configurations)
-        @configurations = configurations
-      end
-
-      def get(url, data={})
+      def self.get(url, request = nil)
         uri = URI.parse url
-        uri.query = URI.encode_www_form data
-        request = Net::HTTP::Get.new uri
-        http request, uri.host, uri.port
+        uri.query = request.to_param unless request.nil?
+        http_request = Net::HTTP::Get.new uri
+        http http_request, uri.host, uri.port
       rescue TypeError
         raise WebserviceError, "can't solve the given URL"
       rescue NoMethodError
@@ -22,10 +18,10 @@ module Pombo
 
       private
 
-      def http(request, host, port)
+      def self.http(http_request, host, port)
         http = Net::HTTP.new host, port
-        http.open_timeout = @configurations.request_timeout
-        http.request(request)
+        http.open_timeout = Pombo.configurations.request_timeout
+        http.request(http_request)
       end
     end
   end

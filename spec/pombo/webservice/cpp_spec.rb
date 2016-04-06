@@ -54,7 +54,7 @@ describe Pombo::Webservice::CPP do
     }
   end
 
-  subject { Pombo::Webservice::CPP.new configurations }
+  subject { Pombo::Webservice::CPP }
 
   describe '#shipping' do
     context 'when performing the query a service' do

@@ -1,6 +1,8 @@
 require 'spec_helper'
 
 describe Pombo do
+  let(:package) { spy("package") }
+
   include_examples 'configuration_data'
 
   it 'has a version number' do
@@ -8,7 +10,7 @@ describe Pombo do
   end
 
   describe 'API' do
-    %i[setup set configuration shipping delivery_time shipping_value].each do |method|
+    %i[setup set configurations shipping delivery_time shipping_value].each do |method|
       it "should respond to .#{ method }" do
         is_expected.to respond_to method
       end
@@ -40,12 +42,21 @@ describe Pombo do
     end
 
     it 'change the current object settings' do
-      expect{ subject.set(contract_code: 'something', password: 'something') }.to change{ subject.configuration }
+      expect{ subject.set(contract_code: 'something', password: 'something') }.to change{ subject.configurations }
     end
 
     it 'does not change the default settings' do
       expect{ subject.set(contract_code: 'something', password: 'something') }.not_to change{ Pombo::Configuration.default }
     end
+  end
+
+  describe '.shipping' do
+    it 'uses the webservice CPP to calculate' do
+      expect(Pombo::Webservice::CPP).to receive(:shipping).with(package)
+
+      Pombo.shipping package
+    end
+
   end
 
 end
