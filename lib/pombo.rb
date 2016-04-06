@@ -10,6 +10,10 @@ require 'pombo/webservice/base'
 require 'pombo/webservice/cpp'
 require 'pombo/webservice/cpp/service'
 require 'pombo/webservice/cpp/response'
+require 'pombo/webservice/cpp/base_request'
+require 'pombo/webservice/cpp/shipping_request'
+require 'pombo/webservice/cpp/shipping_value_request'
+require 'pombo/webservice/cpp/delivery_time_request'
 
 module Pombo
   # Inform settings for persisting with default
@@ -39,22 +43,23 @@ module Pombo
   # @options (see .setup)
   # @return [Pombo::Configuration] current settings
   def self.set(**args)
-    @@configuration = Configuration.new args
+    @@configurations = Configuration.new args
   end
 
   # @return [Pombo::Configuration] current settings
-  def self.configuration
-    @@configuration ||= Configuration.new
+  def self.configurations
+    @@configurations ||= Configuration.new
   end
 
   def self.shipping(package)
-    ws = Webservice::CPP.new(@@configurations)
-    ws.shipping(package)
+    Webservice::CPP.shipping(package)
   end
 
-  def self.delivery_time(service_code, package)
+  def self.delivery_time(package)
+    Webservice::CPP.delivery_time(package)
   end
 
-  def self.shipping_value(service_code, package)
+  def self.shipping_value(package)
+    Webservice::CPP.shipping_value(package)
   end
 end

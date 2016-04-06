@@ -1,17 +1,10 @@
 module Pombo
   class Package::Item
-    attr_accessor :weight, :length, :height, :width, :diameter, :quantity
-    attr_reader :format
+    attr_accessor :weight, :length, :height, :width, :diameter, :quantity, :format
 
     def initialize(**args)
       args = { weight: 0.0, length: 0.0, height: 0.0, width: 0.0, diameter: 0.0, quantity: 1, format: Pombo::Package::Format.find(:box).code }.merge(args)
       args.each { |key, value| __send__("#{ key }=", value) }
-    end
-
-    def format=(value)
-      formats = Pombo::Package::Format.all.map(&:code)
-      raise TypeError, "no implicit conversion of #{ value } into item format" unless formats.include?(value)
-      @format = value
     end
 
     def volume

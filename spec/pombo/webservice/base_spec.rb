@@ -3,7 +3,7 @@ require 'spec_helper'
 describe Pombo::Webservice::Base do
   before { stub_request(:any, "http://www.anything.com/") }
 
-  subject { Pombo::Webservice::Base.new Pombo::Configuration.new }
+  subject { Pombo::Webservice::Base }
 
   describe '#get' do
     it 'access the specified URL' do

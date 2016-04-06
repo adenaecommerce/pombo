@@ -24,6 +24,10 @@ describe Pombo::Package::Item do
     include_examples 'default_value', :quantity, 1
   end
 
+  describe '#format' do
+    include_examples 'default_value', :format, Pombo::Package::Format.find(:box).code
+  end
+
   describe '#weight' do
     include_examples 'default_value', :weight, 0.0
   end
@@ -42,14 +46,6 @@ describe Pombo::Package::Item do
 
   describe '#diameter' do
     include_examples 'default_value', :diameter, 0.0
-  end
-
-  describe '#format' do
-    include_examples 'default_value', :format, Pombo::Package::Format.find(:box).code
-
-    it 'throw exception if the format is not supported' do
-      expect{ subject.format = 3434324234 }.to raise_error(TypeError)
-    end
   end
 
   describe '#volume' do
