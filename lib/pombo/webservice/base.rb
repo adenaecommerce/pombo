@@ -20,6 +20,7 @@ module Pombo
 
       def self.http(http_request, host, port)
         http = Net::HTTP.new host, port
+        #http.set_debug_output($stdout)
         http.open_timeout = Pombo.configurations.request_timeout
         http.request(http_request)
       end
