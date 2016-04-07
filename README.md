@@ -1,3 +1,7 @@
+> ***
+> Attention! It is strongly advised not to use this version in production
+> ***
+
 # Pombo
 [![Build Status](https://travis-ci.org/adenaecommerce/pombo.svg?branch=master)](https://travis-ci.org/adenaecommerce/pombo)
 [![Dependency Status](https://gemnasium.com/adenaecommerce/pombo.svg)](https://gemnasium.com/adenaecommerce/pombo)
