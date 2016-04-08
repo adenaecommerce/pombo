@@ -1,9 +1,13 @@
+> ***
+> Attention! It is strongly advised not to use this version in production
+> ***
+
 # Pombo
 [![Build Status](https://travis-ci.org/adenaecommerce/pombo.svg?branch=master)](https://travis-ci.org/adenaecommerce/pombo)
 [![Dependency Status](https://gemnasium.com/adenaecommerce/pombo.svg)](https://gemnasium.com/adenaecommerce/pombo)
-[![GitHub release](https://img.shields.io/github/release/qubyte/rubidium.svg)](https://github.com/adenaecommerce/pombo/releases)
 [![Inline docs](http://inch-ci.org/github/adenaecommerce/pombo.svg?branch=master)](http://inch-ci.org/github/adenaecommerce/pombo)
 [![Hex.pm](https://img.shields.io/badge/yard-docs-blue.svg)](http://www.rubydoc.info/github/adenaecommerce/pombo/master)
+[![Gem Version](https://badge.fury.io/rb/pombo.svg)](https://badge.fury.io/rb/pombo)
 
 Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/pombo`. To experiment with that code, run `bin/console` for an interactive prompt.
 
