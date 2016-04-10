@@ -6,7 +6,7 @@
       <PrazoEntrega>1</PrazoEntrega>
       <EntregaDomiciliar>S</EntregaDomiciliar>
       <EntregaSabado>N</EntregaSabado>
-      <Erro>0</Erro>
+      <Erro/>
       <MsgErro/>
       <obsFim>Test A</obsFim>
     </cServico>
@@ -15,7 +15,7 @@
       <PrazoEntrega>1</PrazoEntrega>
       <EntregaDomiciliar>S</EntregaDomiciliar>
       <EntregaSabado>N</EntregaSabado>
-      <Erro>0</Erro>
+      <Erro/>
       <MsgErro/>
       <obsFim>Test B</obsFim>
     </cServico>

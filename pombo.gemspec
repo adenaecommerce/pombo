@@ -14,12 +14,14 @@ Gem::Specification.new do |spec|
   spec.homepage      = "https://github.com/adenaecommerce/pombo"
   spec.license       = 'MIT'
   spec.platform      = Gem::Platform::RUBY
+  spec.required_ruby_version = '~> 2.3'
 
   spec.files         = `git ls-files -z`.split("\x0").reject { |f| f.match(%r{^(test|spec|features)/}) }
   spec.bindir        = "exe"
   spec.executables   = spec.files.grep(%r{^exe/}) { |f| File.basename(f) }
   spec.require_paths = ["lib"]
 
+  spec.add_runtime_dependency "i18n", "~> 0.7.0"
   spec.add_runtime_dependency "nokogiri", "~> 1.6"
   spec.add_runtime_dependency "sax-machine", "~> 1.3"
 

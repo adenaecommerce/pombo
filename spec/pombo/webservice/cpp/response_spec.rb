@@ -13,7 +13,7 @@ describe Pombo::Webservice::CPP::Response do
     end
 
     it 'returns CPP services on Array' do
-			expect(subject.body.first).to be_a(Pombo::Webservice::CPP::Service)
+			expect(subject.body.first).to be_a(Pombo::Webservice::CPP::ServiceResponse)
     end
   end
 end

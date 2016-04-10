@@ -1,7 +1,7 @@
 $LOAD_PATH.unshift File.expand_path('../../lib', __FILE__)
-require 'pombo'
 require 'pry'
 require 'webmock/rspec'
+require 'pombo'
 
 WebMock.disable_net_connect!
 
@@ -13,7 +13,8 @@ shared_examples 'configuration_data' do
       extends_delivery: 0,
       log_level: :info,
       logger: :logger,
-      request_timeout: 5
+      request_timeout: 5,
+      locale: 'pt-BR'
     }
   end
 
@@ -24,7 +25,8 @@ shared_examples 'configuration_data' do
       extends_delivery: 1,
       log_level: :warn,
       logger: :logger,
-      request_timeout: 10
+      request_timeout: 10,
+      locale: 'pt-BR'
     }
   end
 end

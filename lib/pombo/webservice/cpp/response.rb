@@ -5,7 +5,7 @@ module Pombo
     class CPP
       class ParseService
         include SAXMachine
-        elements :cServico, as: :services, class: Pombo::Webservice::CPP::Service
+        elements :cServico, as: :services, class: Pombo::Webservice::CPP::ServiceResponse
       end
 
       class Response

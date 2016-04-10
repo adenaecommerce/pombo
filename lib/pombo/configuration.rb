@@ -6,14 +6,17 @@ module Pombo
       extends_delivery: 0,
       log_level: :info,
       logger: :logger,
-      request_timeout: 5
+      request_timeout: 5,
+      locale: 'pt-BR'
     }
 
-    attr_accessor :contract_code, :password, :extends_delivery, :log_level, :logger, :request_timeout
+    attr_accessor :contract_code, :password, :extends_delivery, :log_level, :logger, :request_timeout, :locale
 
     def initialize(**args)
       args = @@default.merge(args)
       args.each { |key, value| __send__("#{ key }=", value) }
+
+      I18n.locale = locale
     end
 
     # Saves the current state of the standard as an object

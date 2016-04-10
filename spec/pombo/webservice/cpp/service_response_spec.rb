@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe Pombo::Webservice::CPP::Service do
+describe Pombo::Webservice::CPP::ServiceResponse do
   let(:xml_text){ File.read('spec/support/cpp_shipping_response1.xml') }
 
   describe 'API' do
