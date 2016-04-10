@@ -41,7 +41,7 @@ describe Pombo::Webservice::CPP do
       end
 
       it 'returns CPP services on Array' do
-        expect(subject.shipping(package1).first).to be_a(Pombo::Webservice::CPP::Service)
+        expect(subject.shipping(package1).first).to be_a(Pombo::Webservice::CPP::ServiceResponse)
       end
 
       it 'return only one service' do
@@ -64,7 +64,7 @@ describe Pombo::Webservice::CPP do
       end
 
       it 'returns CPP services on Array' do
-        expect(subject.shipping(package2).first).to be_a(Pombo::Webservice::CPP::Service)
+        expect(subject.shipping(package2).first).to be_a(Pombo::Webservice::CPP::ServiceResponse)
       end
 
       it 'returns more than one service' do
@@ -89,7 +89,7 @@ describe Pombo::Webservice::CPP do
       end
 
       it 'returns CPP services on Array' do
-        expect(subject.delivery_time(package1).first).to be_a(Pombo::Webservice::CPP::Service)
+        expect(subject.delivery_time(package1).first).to be_a(Pombo::Webservice::CPP::ServiceResponse)
       end
 
       it 'return only one service' do
@@ -112,7 +112,7 @@ describe Pombo::Webservice::CPP do
       end
 
       it 'returns CPP services on Array' do
-        expect(subject.delivery_time(package2).first).to be_a(Pombo::Webservice::CPP::Service)
+        expect(subject.delivery_time(package2).first).to be_a(Pombo::Webservice::CPP::ServiceResponse)
       end
 
       it 'returns more than one service' do
@@ -137,7 +137,7 @@ describe Pombo::Webservice::CPP do
       end
 
       it 'returns CPP services on Array' do
-        expect(subject.delivery_time(package1).first).to be_a(Pombo::Webservice::CPP::Service)
+        expect(subject.delivery_time(package1).first).to be_a(Pombo::Webservice::CPP::ServiceResponse)
       end
 
       it 'return only one service' do
@@ -160,7 +160,7 @@ describe Pombo::Webservice::CPP do
       end
 
       it 'returns CPP services on Array' do
-        expect(subject.delivery_time(package2).first).to be_a(Pombo::Webservice::CPP::Service)
+        expect(subject.delivery_time(package2).first).to be_a(Pombo::Webservice::CPP::ServiceResponse)
       end
 
       it 'returns more than one service' do
@@ -185,7 +185,7 @@ describe Pombo::Webservice::CPP do
       end
 
       it 'returns CPP services on Array' do
-        expect(subject.shipping_value(package1).first).to be_a(Pombo::Webservice::CPP::Service)
+        expect(subject.shipping_value(package1).first).to be_a(Pombo::Webservice::CPP::ServiceResponse)
       end
 
       it 'return only one service' do
@@ -208,7 +208,7 @@ describe Pombo::Webservice::CPP do
       end
 
       it 'returns CPP services on Array' do
-        expect(subject.shipping_value(package2).first).to be_a(Pombo::Webservice::CPP::Service)
+        expect(subject.shipping_value(package2).first).to be_a(Pombo::Webservice::CPP::ServiceResponse)
       end
 
       it 'returns more than one service' do
@@ -216,6 +216,4 @@ describe Pombo::Webservice::CPP do
       end
     end
   end
-
-
 end

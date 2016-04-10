@@ -3,7 +3,7 @@ require 'sax-machine'
 module Pombo
   module Webservice
     class CPP
-      class Service
+      class ServiceResponse
         include SAXMachine
 
         element :Codigo, as: :code
