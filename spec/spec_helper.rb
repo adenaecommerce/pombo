@@ -14,7 +14,7 @@ shared_examples 'configuration_data' do
       log_level: :info,
       logger: :logger,
       request_timeout: 5,
-      locale: 'pt-br'
+      locale: 'pt-BR'
     }
   end
 
@@ -26,7 +26,7 @@ shared_examples 'configuration_data' do
       log_level: :warn,
       logger: :logger,
       request_timeout: 10,
-      locale: 'pt-br'
+      locale: 'pt-BR'
     }
   end
 end

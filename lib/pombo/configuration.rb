@@ -7,7 +7,7 @@ module Pombo
       log_level: :info,
       logger: :logger,
       request_timeout: 5,
-      locale: 'pt-br'
+      locale: 'pt-BR'
     }
 
     attr_accessor :contract_code, :password, :extends_delivery, :log_level, :logger, :request_timeout, :locale
