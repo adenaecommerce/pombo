@@ -29,8 +29,10 @@ module Pombo
         element :EntregaSabado, as: :delivery_sartuday do |value|
           value == 'S'
         end
-        element :Erro, as: :error_code
-        element :MsgErro, as: :error_message
+        element :Erro, as: :error_code, default: '0'
+        element :MsgErro, as: :error_message do |value|
+          I18n.t "webservices.cpp.errors.#{ error_code }"
+        end
         element :obsFim, as: :comments
       end
     end

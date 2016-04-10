@@ -35,6 +35,7 @@ describe Pombo::Configuration do
             config.log_level        = options[:log_level]
             config.logger           = options[:logger]
             config.request_timeout  = options[:request_timeout]
+            config.locale           = options[:locale]
           end
         end.to change(subject.class, :default).to options
       end
