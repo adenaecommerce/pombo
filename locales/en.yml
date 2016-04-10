@@ -28,3 +28,60 @@ en:
     '1': Box/Package
     '2': Roll/Prism
     '3': Envelope
+
+  webservices:
+    cpp:
+      error:
+        '0': Successfully processing
+        '-1': Invalid service code
+        '-2': invalid origin zip code
+        '-3': Invalid destination zip code
+        '-4': Exceeded weight
+        '-5': The declared value must not exceed R$ 10,000.00
+        '-6': Service unavailable to the informed section
+        '-7': The declared Value is required for this service
+        '-8': This service does not accept hand own
+        '-9': This service does not accept return receipt requested
+        '-10': Pricing unavailable for informed stretch
+        '-11': For price setting should be informed also the length, width and height of the object in centimeters (cm)
+        '-12': Invalid length
+        '-13': Invalid width
+        '-14': Invalid height
+        '-15': The length may not exceed 105 cm
+        '-16': The width can not be larger than 105 cm
+        '-17': The height can not be greater than 105 cm
+        '-18': The height can not be less than 2 cm
+        '-20': The width can not be less than 11 cm
+        '-22': Length can not be less than 16 cm
+        '-23': The resulting sum of the length + width + height must not exceed 200 cm
+        '-24': Invalid length
+        '-25': Invalid diameter
+        '-26': Enter the length
+        '-27': Enter the diameter
+        '-28': The length may not exceed 105 cm
+        '-29': The diameter can not be greater than 91 cm
+        '-30': The length can not be less than 18 cm
+        '-31': The diameter can not be less than 5 cm
+        '-32': The resulting sum of the length + two times the diameter should not exceed 200 cm
+        '-33': System temporarily unavailable. Please try later
+        '-34': Administrative Code or invalid password
+        '-35': Incorrect password
+        '-36': Customer does not have current contract with the Post Office
+        '-37': Customer does not have active service in his contract
+        '-38': Service unavailable for this administrative code
+        '-39': Exceeded weight for the envelope format
+        '-40': For definition of price should be informed, as well, the length and the width and height of the object in centimeters (cm)
+        '-41': The length can not be more than 60 cm
+        '-42': Length can not be less than 16 cm
+        '-43': The resulting sum of the length + width must not exceed 120 cm
+        '-44': The width can not be less than 11 cm
+        '-45': The width may be not greater than 60 cm
+        '-888': Error when calculating the rate
+        '006': City of origin does not cover the given service
+        '007': Destination location does not cover the given service
+        '008': Service unavailable to the informed section
+        '009': Initial zip code belonging to risk area
+        '010': Area delivery temporarily subject to different term
+        '011': initial and final zip code belonging to risk area
+        '7': Service unavailable, try again later
+        '99': An error occurred while processing
