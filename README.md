@@ -9,37 +9,118 @@
 [![Hex.pm](https://img.shields.io/badge/yard-docs-blue.svg)](http://www.rubydoc.info/github/adenaecommerce/pombo/master)
 [![Gem Version](https://badge.fury.io/rb/pombo.svg)](https://badge.fury.io/rb/pombo)
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/pombo`. To experiment with that code, run `bin/console` for an interactive prompt.
+Pombo is a gem that allows the use of webservices Brazilian shipping package service ([Correios](http://correios.com.br/para-voce))
 
-TODO: Delete this and the text above, and describe your gem
+## Features
+
+* Lets put together a package with multiple items
+* Lets see the shipping price of a package
+* Lets see the period of sending a packet
+* It allows you to check the time and shipping price of a package
+* It supports internationalization
 
 ## Installation
 
-Add this line to your application's Gemfile:
+    $ gem install pombo
+
+
+## Configuration
+
+> The data returned in sending queries are the same provided at a agency of Correios. Companies can hire a differentiated service and use the code of their contract in the use of Pombo.
+
+To modify the default settings, use the #setup
 
 ```ruby
-gem 'pombo'
+Pombo.setup do |config|
+  config.contract_code = 'AA99BB'
+  config.password = '999999'
+  config.extends_delivery = 0
+  config.request_timeout = 5
+  config.log_level = :info
+  config.logger = :logger
+  config.locale = 'pt-BR'
+end
 ```
 
-And then execute:
+If you need to modify some settings at a certain time, use the #set
 
-    $ bundle
+```ruby
+Pombo.set request_timeout: 10, locale: 'en'
+```
 
-Or install it yourself as:
+## Formats
 
-    $ gem install pombo
+The formats are pre-defined objects with the information provided by the Correios
+
+The Correios work with formats: box, envelope and roll. All item must have a format. The package takes a format as items added
+
+List all formats supported by delivery services
+
+```ruby
+Pombo::Package::Format.all
+
+# => [
+# =>    #<OpenStruct code=3, name="Envelope", max_length=60, min_length=16, max_width=60, min_width=11, max_weight=1>
+# =>    ....
+# => ]
+```
+
+Find a specific format by code or by name
+
+```ruby
+Pombo::Package::Format.find '3'
+# => #<OpenStruct code=3, name="Envelope", max_length=60, min_length=16, max_width=60, min_width=11, max_weight=1>
+
+# Or
+
+Pombo::Package::Format.find 'envelope'
+# => #<OpenStruct code=3, name="Envelope", max_length=60, min_length=16, max_width=60, min_width=11, max_weight=1>
+```
+
+## Services
+
+The services are pre-defined objects with the information provided by the Correios
+
+List all formats supported by delivery services
+
+```ruby
+Pombo::Services.all
+
+# => [
+# =>    #<OpenStruct code="41106", max_weight=30, name="PAC", description="PAC (without contract)">,
+# =>    ....
+# => ]
+```
+
+Listing all the services of a group
+
+```ruby
+Pombo::Services.all :pac
+# => [
+# =>    #<OpenStruct code="41106", max_weight=30, name="PAC", description="PAC (without contract)">,
+# =>    ....
+# => ]
+```
+
+Search for a service code
+
+```ruby
+Pombo::Services.find "41106"
+# => #<OpenStruct code="41106", max_weight=30, name="PAC", description="PAC (without contract)">
+```
+
+## Packages
+
+TODO: write
 
 ## Usage
 
-TODO: Write usage instructions here
-
-## Development
-
-After checking out the repo, run `bin/setup` to install dependencies. Then, run `rake spec` to run the tests. You can also run `bin/console` for an interactive prompt that will allow you to experiment.
-
-To install this gem onto your local machine, run `bundle exec rake install`. To release a new version, update the version number in `version.rb`, and then run `bundle exec rake release`, which will create a git tag for the version, push git commits and tags, and push the `.gem` file to [rubygems.org](https://rubygems.org).
+TODO: write
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/pombo. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](http://contributor-covenant.org) code of conduct.
+Bug reports and pull requests are welcome on GitHub at https://github.com/adenaecommerce/pombo. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](http://contributor-covenant.org) code of conduct.
 
+## License
+
+MIT License. See the included MIT-LICENSE file.

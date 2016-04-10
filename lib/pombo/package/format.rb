@@ -1,11 +1,31 @@
 module Pombo
   class Package
     module Format
-
+      # List all formats supported by delivery services
+      # @return [Array<OpenStruct>] with the data structure representing a format
+      #
+      # @example
+      #     Pombo::Package::Format.all
+      #     # => [
+      #     # =>    #<OpenStruct code=3, name="Envelope", max_length=60, min_length=16, max_width=60, min_width=11, max_weight=1>
+      #     # =>    ....
+      #     # => ]
+      #
       def self.all
         all_formats.values
       end
 
+      # Find a specific format by code or by name
+      # @return [OpenStruct] the data structure representing a format
+      # @param code [String] code or the format name, to box `1, box or package`, to roll `2, roll or prism` and to envelope `3 or envelope`
+      # @example
+      #     Pombo::Package::Format.find '3'
+      #     # => #<OpenStruct code=3, name="Envelope", max_length=60, min_length=16, max_width=60, min_width=11, max_weight=1>
+      #
+      #     # Or
+      #
+      #     Pombo::Package::Format.find 'envelope'
+      #     # => #<OpenStruct code=3, name="Envelope", max_length=60, min_length=16, max_width=60, min_width=11, max_weight=1>
       def self.find(code)
         case code.to_s
         when '1', 'box', 'package'
