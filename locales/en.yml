@@ -23,3 +23,8 @@ en:
       '81868': E-SEDEX (with contract, group 1)
       '81833': E-SEDEX (with contract, group 2)
       '81850': E-SEDEX (with contract, group 3)
+
+  formats:
+    '1': Box/Package
+    '2': Roll/Prism
+    '3': Envelope

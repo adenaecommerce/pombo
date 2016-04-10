@@ -24,3 +24,8 @@ pt-BR:
       '81833': E-SEDEX (com contrato, grupo 2)
       '81850': E-SEDEX (com contrato, grupo 3)
 
+  formats:
+    '1': Caixa/Pacote
+    '2': Rolo/Prisma
+    '3': Envelope
+
