@@ -1,3 +1,6 @@
+require 'i18n'
+I18n.load_path += Dir[File.expand_path('../../locales/*.yml', __FILE__)]
+
 require 'pombo/version'
 require 'pombo/configuration'
 require 'pombo/exception'
@@ -62,4 +65,6 @@ module Pombo
   def self.shipping_value(package)
     Webservice::CPP.shipping_value(package)
   end
+
+  set
 end

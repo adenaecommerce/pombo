@@ -1,0 +1,24 @@
+en:
+  services:
+    pac:
+      '41106': PAC (without contract)
+      '41068': PAC (with contract)
+      '41300': PAC (large format)
+    sedex:
+      '40010': SEDEX (without contract)
+      '40045': SEDEX to charge (without contract)
+      '40126': SEDEX to charge (with contract)
+      '40215': SEDEX 10 (without contract)
+      '40290': SEDEX today (without contract)
+      '40096': SEDEX (with contract)
+      '40436': SEDEX (with contract)
+      '40444': SEDEX (with contract)
+      '40568': SEDEX (with contract)
+      '40606': SEDEX (with contract)
+    e_sedex:
+      '81019': E-SEDEX (with contract)
+      '81027': E-SEDEX Priority (with contract)
+      '81035': E-SEDEX Express (with contract)
+      '81868': E-SEDEX (with contract, group 1)
+      '81833': E-SEDEX (with contract, group 2)
+      '81850': E-SEDEX (with contract, group 3)
