@@ -7,6 +7,8 @@ module Pombo
       args.each { |key, value| __send__("#{ key }=", value) }
     end
 
+    # Calculates the volume item in accordance with the format
+    # @return [Float] the volume value
     def volume
       case format
       when Pombo::Package::Format.find(:box).code

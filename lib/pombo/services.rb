@@ -3,6 +3,26 @@ require 'ostruct'
 module Pombo
   module Services
 
+    # List all services supported
+    # @param service [Symbol] group services, `:pac`, `sedex` or `e_sedex`
+    # @return [Array<OpenStruct>] with the data structure representing a service
+    #
+    # @example
+    #     Pombo::Services.all
+    #     # => [
+    #     # =>    #<OpenStruct code="41106", max_weight=30, name="PAC", description="PAC (without contract)">,
+    #     # =>    ....
+    #     # => ]
+    #
+    # Listing all the services of a group
+    #
+    # @example
+    #     Pombo::Services.all :pac
+    #     # => [
+    #     # =>    #<OpenStruct code="41106", max_weight=30, name="PAC", description="PAC (without contract)">,
+    #     # =>    ....
+    #     # => ]
+    #
     def self.all(service = nil)
       case service
       when :pac
@@ -16,6 +36,11 @@ module Pombo
       end
     end
 
+    # Search for a service code
+    # @return [OpenStruct] the data structure representing a service
+    # @example
+    #     Pombo::Services.find "41106"
+    #     # => #<OpenStruct code="41106", max_weight=30, name="PAC", description="PAC (without contract)">
     def self.find(code)
       all_services.values_at(code).first
     end

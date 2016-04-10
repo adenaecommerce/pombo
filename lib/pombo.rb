@@ -20,13 +20,16 @@ require 'pombo/webservice/cpp/delivery_time_request'
 
 module Pombo
   # Inform settings for persisting with default
-  # @yield [config] with the configuration data
-  # @option config [String]  :contract_code Its administrative code by the ECT
-  # @option config [String]  :password Password to access the service, associated with its contract code
-  # @option config [Integer] :extends_delivery Days late on a package
-  # @option config [Integer] :request_timeout Second delay when accessing the webservice
-  # @option config [Symbol]  :log_level Log Level, `:info`, `:debug` or `warn`
-  # @option config [Symbol]  :logger object to trigger messages (defaults to `:logger`)
+  # @yield [config] with the configuration data.
+  #
+  # The options for configuration are:
+  # - [String]  :contract_code Its administrative code by the ECT
+  # - [String]  :password Password to access the service, associated with its contract code
+  # - [Integer] :extends_delivery Days late on a package
+  # - [Integer] :request_timeout Second delay when accessing the webservice
+  # - [Symbol]  :log_level Log Level, `:info`, `:debug` or `warn`
+  # - [Symbol]  :logger object to trigger messages (defaults to `:logger`)
+  # - [String]  :locale tells you what language will be used (defaults to `pt-BR`)
   #
   # @example
   #   Pombo.setup do |config|
@@ -36,6 +39,7 @@ module Pombo
   #     config.request_timeout = 5
   #     config.log_level = :info
   #     config.logger = :logger
+  #     config.locale = 'pt-BR'
   #   end
   def self.setup(&block)
     Configuration.setup(&block)
