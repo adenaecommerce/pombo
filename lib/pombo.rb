@@ -18,36 +18,19 @@ require 'pombo/webservice/cpp/shipping_request'
 require 'pombo/webservice/cpp/shipping_value_request'
 require 'pombo/webservice/cpp/delivery_time_request'
 
+# It allows you to configure and perform consulting delivery services
+#
+# For more information read the file {file:/readmes/README-EN.md}
 module Pombo
   # Inform settings for persisting with default
   # @yield [config] with the configuration data.
-  #
-  # The options for configuration are:
-  # - [String]  :contract_code Its administrative code by the ECT
-  # - [String]  :password Password to access the service, associated with its contract code
-  # - [Integer] :extends_delivery Days late on a package
-  # - [Integer] :request_timeout Second delay when accessing the webservice
-  # - [Symbol]  :log_level Log Level, `:info`, `:debug` or `warn`
-  # - [Symbol]  :logger object to trigger messages (defaults to `:logger`)
-  # - [String]  :locale tells you what language will be used (defaults to `pt-BR`)
-  #
-  # @example
-  #   Pombo.setup do |config|
-  #     config.contract_code = 'AA99BB'
-  #     config.password = '999999'
-  #     config.extends_delivery = 0
-  #     config.request_timeout = 5
-  #     config.log_level = :info
-  #     config.logger = :logger
-  #     config.locale = 'pt-BR'
-  #   end
+  # @return [Pombo::Configuration]
   def self.setup(&block)
     Configuration.setup(&block)
   end
 
   # Tells the settings that will be used at this time
   # @note Does not modify the default settings
-  # @options (see .setup)
   # @return [Pombo::Configuration] current settings
   def self.set(**args)
     @@configurations = Configuration.new args
@@ -58,17 +41,24 @@ module Pombo
     @@configurations ||= Configuration.new
   end
 
+  # Perform the quotation of delivery of consulting services value and delivery time
+  # @param package [Pombo::Package] the package to be consulted
+  # @return [Array<Pombo::Webservice::CPP::ServiceResponse>]
   def self.shipping(package)
     Webservice::CPP.shipping(package)
   end
 
+  # Perform the quotation of delivery of consulting delivery time
+  # @param package [Pombo::Package] the package to be consulted
+  # @return [Array<Pombo::Webservice::CPP::ServiceResponse>]
   def self.delivery_time(package)
     Webservice::CPP.delivery_time(package)
   end
 
+  # Perform the quotation of delivery of consulting services value
+  # @param package [Pombo::Package] the package to be consulted
+  # @return [Array<Pombo::Webservice::CPP::ServiceResponse>]
   def self.shipping_value(package)
     Webservice::CPP.shipping_value(package)
   end
-
-  set
 end

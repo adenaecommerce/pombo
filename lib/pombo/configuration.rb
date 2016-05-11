@@ -44,7 +44,7 @@ module Pombo
     end
 
     # Inform settings for persisting with default
-    # @see Pombo
+    # @see Pombo::Configuration
     def self.setup(&block)
       if block_given?
         config = new
