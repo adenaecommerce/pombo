@@ -1,4 +1,19 @@
 module Pombo
+  # It allows you to modify the settings of Pombo
+  # @!attribute [rw] contract_code
+  #   Its administrative code by the ECT
+  # @!attribute [rw] password
+  #   Password to access the service, associated with its contract code
+  # @!attribute [rw] extends_delivery
+  #   Days late on a package
+  # @!attribute [rw] request_timeout
+  #   Second delay when accessing the webservice
+  # @!attribute [rw] log_level
+  #   Log Level, `:info`, `:debug` or `warn`
+  # @!attribute [rw] logger
+  #   Object to trigger messages (defaults to +Logger+)
+  # @!attribute [rw] locale
+  #   Tells you what language will be used (defaults to `pt-BR`)
   class Configuration
     @@default = {
       contract_code: nil,
@@ -20,15 +35,16 @@ module Pombo
     end
 
     # Saves the current state of the standard as an object
-    # @return [Hash] The new default settings
+    # @return [Pombo::Configuration] with default settings
     def set_default
       attributes = {}
       instance_variables.each{ |v| attributes[v.to_s.delete('@').to_sym] = instance_variable_get(v) }
       @@default.merge!(attributes)
+      self
     end
 
     # Inform settings for persisting with default
-    # @see Pombo.setup
+    # @see Pombo
     def self.setup(&block)
       if block_given?
         config = new
