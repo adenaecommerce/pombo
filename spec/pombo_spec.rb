@@ -73,4 +73,11 @@ describe Pombo do
       Pombo.shipping_value package
     end
   end
+
+  describe '.t' do
+    it 'use the given locale in settings' do
+      I18n.locale = :en
+      expect(subject.t('webservices.cpp.error.0')).to eq('Processamento com sucesso')
+    end
+  end
 end
