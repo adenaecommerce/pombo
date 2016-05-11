@@ -3,6 +3,7 @@ require 'net/http'
 
 module Pombo
   module Webservice
+    # @abstract
     class Base
 
       def self.get(url, request = nil)

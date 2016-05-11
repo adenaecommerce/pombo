@@ -20,6 +20,10 @@ describe Pombo::Configuration do
       subject.set_default
       expect(subject.class.default).to eq(options)
     end
+
+    it 'returns a Pombo::Configuration object' do
+      expect(subject.set_default).to be_a Pombo::Configuration
+    end
   end
 
   describe '.setup' do

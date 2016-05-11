@@ -1,8 +1,8 @@
 require 'ostruct'
 
 module Pombo
+  # Contains delivery services
   module Services
-
     # List all services supported
     # @param service [Symbol] group services, `:pac`, `sedex` or `e_sedex`
     # @return [Array<OpenStruct>] with the data structure representing a service

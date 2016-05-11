@@ -3,6 +3,7 @@ require 'sax-machine'
 module Pombo
   module Webservice
     class CPP
+      # Response standard for service delivery
       class ServiceResponse
         include SAXMachine
 

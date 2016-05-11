@@ -1,4 +1,7 @@
 module Pombo
+  # Item is the object that will be sent in the package through the Brazilian Post Service
+  #
+  # By default the quantity is 1 and the format is +Pombo::Package::Format.find(:box).code+
   class Package::Item
     attr_accessor :weight, :length, :height, :width, :diameter, :quantity, :format
 

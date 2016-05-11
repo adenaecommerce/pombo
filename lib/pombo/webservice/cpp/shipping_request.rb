@@ -3,8 +3,10 @@ require 'uri'
 module Pombo
   module Webservice
     class CPP
+      # Request for shipping service
       class ShippingRequest < BaseRequest
 
+        # Convert the object to the format accepted in webservice Correios
         def to_hash
           {
             nCdEmpresa: Pombo.configurations.contract_code.to_s,

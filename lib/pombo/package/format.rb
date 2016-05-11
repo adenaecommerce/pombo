@@ -1,5 +1,6 @@
 module Pombo
   class Package
+    # The formats are pre-defined objects with the information provided by the Correios
     module Format
       # List all formats supported by delivery services
       # @return [Array<OpenStruct>] with the data structure representing a format
@@ -22,7 +23,7 @@ module Pombo
       #     Pombo::Package::Format.find '3'
       #     # => #<OpenStruct code=3, name="Envelope", max_length=60, min_length=16, max_width=60, min_width=11, max_weight=1>
       #
-      #     # Or
+      #     # => Or
       #
       #     Pombo::Package::Format.find 'envelope'
       #     # => #<OpenStruct code=3, name="Envelope", max_length=60, min_length=16, max_width=60, min_width=11, max_weight=1>
