@@ -32,7 +32,7 @@ module Pombo
         end
         element :Erro, as: :error_code, default: '0'
         element :MsgErro, as: :error_message do |value|
-          I18n.t "webservices.cpp.errors.#{ error_code }"
+          Pombo.t "webservices.cpp.errors.#{ error_code }"
         end
         element :obsFim, as: :comments
       end

@@ -30,8 +30,6 @@ module Pombo
     def initialize(**args)
       args = @@default.merge(args)
       args.each { |key, value| __send__("#{ key }=", value) }
-
-      I18n.locale = locale
     end
 
     # Saves the current state of the standard as an object

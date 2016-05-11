@@ -61,4 +61,13 @@ module Pombo
   def self.shipping_value(package)
     Webservice::CPP.shipping_value(package)
   end
+
+  # Performs internationalization for informed locale in settings
+  # @return [String] internationalized text
+  def self.t(*args)
+    I18n.with_locale configurations.locale do
+      I18n.translate args
+    end.first
+  end
+
 end
