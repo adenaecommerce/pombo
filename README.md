@@ -1,3 +1,7 @@
+> ***
+> Attention! if you are looking for documentation in English, [click here!](readmes/README-EN.md)
+> ***
+
 # Pombo
 [![Build Status](https://travis-ci.org/adenaecommerce/pombo.svg?branch=master)](https://travis-ci.org/adenaecommerce/pombo)
 [![Dependency Status](https://gemnasium.com/adenaecommerce/pombo.svg)](https://gemnasium.com/adenaecommerce/pombo)
@@ -153,7 +157,7 @@ package.volume # => 8228.0
 package.single_item? # => true
 ```
 
-## Usage
+## Utilizando o Pombo
 
 Para realizar uma consulta para saber o valor e o prazo de entrega
 
