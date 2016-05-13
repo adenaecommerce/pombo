@@ -11,8 +11,8 @@ shared_examples 'configuration_data' do
       contract_code: nil,
       password: nil,
       extends_delivery: 0,
-      log_level: :info,
-      logger: :logger,
+      log_level: Pombo::Logger::INFO,
+      logger: Pombo::Logger.new(STDOUT),
       request_timeout: 5,
       locale: 'pt-BR'
     }
@@ -23,8 +23,8 @@ shared_examples 'configuration_data' do
       contract_code: 'AA99BB',
       password: 'AA99CC',
       extends_delivery: 1,
-      log_level: :warn,
-      logger: :logger,
+      log_level: Pombo::Logger::INFO,
+      logger: Pombo::Logger.new(STDOUT),
       request_timeout: 10,
       locale: 'pt-BR'
     }

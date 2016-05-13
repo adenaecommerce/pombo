@@ -9,9 +9,9 @@ module Pombo
   # @!attribute [rw] request_timeout
   #   Second delay when accessing the webservice
   # @!attribute [rw] log_level
-  #   Log Level, `:info`, `:debug` or `warn`
+  #   Level compatible with Ruby Logger
   # @!attribute [rw] logger
-  #   Object to trigger messages (defaults to +Logger+)
+  #   Object to trigger messages (defaults to +Pombo::Logger+)
   # @!attribute [rw] locale
   #   Tells you what language will be used (defaults to `pt-BR`)
   class Configuration
@@ -19,8 +19,8 @@ module Pombo
       contract_code: nil,
       password: nil,
       extends_delivery: 0,
-      log_level: :info,
-      logger: :logger,
+      log_level: Pombo::Logger::INFO,
+      logger: Pombo::Logger.new(STDOUT),
       request_timeout: 5,
       locale: 'pt-BR'
     }
@@ -30,6 +30,8 @@ module Pombo
     def initialize(**args)
       args = @@default.merge(args)
       args.each { |key, value| __send__("#{ key }=", value) }
+
+      logger.level = log_level
     end
 
     # Saves the current state of the standard as an object
@@ -38,6 +40,7 @@ module Pombo
       attributes = {}
       instance_variables.each{ |v| attributes[v.to_s.delete('@').to_sym] = instance_variable_get(v) }
       @@default.merge!(attributes)
+      Pombo.logger.info('update.configuration'){ 'Update the default settings' }
       self
     end
 

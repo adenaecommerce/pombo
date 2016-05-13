@@ -1,6 +1,7 @@
 require 'spec_helper'
 
 describe Pombo::Webservice::CPP do
+  let(:logger){ spy('stdout') }
   let(:configurations) { Pombo::Configuration.new }
 
   let(:package1) do
@@ -24,6 +25,8 @@ describe Pombo::Webservice::CPP do
   let(:shipping_value_params2) { shipping_value_hash(package2) }
 
   subject { Pombo::Webservice::CPP }
+
+  before { allow(Pombo).to receive(:logger).and_return(logger) }
 
   describe '#shipping' do
     context 'when performing the query a service' do

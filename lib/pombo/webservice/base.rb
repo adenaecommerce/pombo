@@ -7,6 +7,7 @@ module Pombo
     class Base
 
       def self.get(url, request = nil)
+        Pombo.logger.info('start_request.webservice') { "GET - #{ url }" }
         uri = URI.parse url
         uri.query = request.to_param unless request.nil?
         http_request = Net::HTTP::Get.new uri
@@ -23,7 +24,9 @@ module Pombo
         http = Net::HTTP.new host, port
         #http.set_debug_output($stdout)
         http.open_timeout = Pombo.configurations.request_timeout
-        http.request(http_request)
+        response = http.request(http_request)
+        Pombo.logger.info('end_request.webservice') { response.inspect }
+        response
       end
     end
   end

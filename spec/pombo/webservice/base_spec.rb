@@ -1,7 +1,12 @@
 require 'spec_helper'
 
 describe Pombo::Webservice::Base do
-  before { stub_request(:any, "http://www.anything.com/") }
+  let(:logger){ spy('stdout') }
+
+  before do
+    stub_request(:any, "http://www.anything.com/")
+    allow(Pombo).to receive(:logger).and_return(logger)
+  end
 
   subject { Pombo::Webservice::Base }
 
@@ -17,6 +22,12 @@ describe Pombo::Webservice::Base do
 
     it 'throw exception for bad parameters' do
       expect { subject.get "http://www.anything.com", 1 }.to raise_error Pombo::WebserviceError
+    end
+
+    it 'send message to log' do
+      expect(logger).to receive(:info).with('start_request.webservice') { "GET - http://www.anything.com/" }
+      expect(logger).to receive(:info).with('end_request.webservice')
+      subject.get "http://www.anything.com/"
     end
   end
 end
