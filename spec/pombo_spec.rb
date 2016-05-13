@@ -80,4 +80,10 @@ describe Pombo do
       expect(subject.t('webservices.cpp.error.0')).to eq('Processamento com sucesso')
     end
   end
+
+  describe '.logger' do
+    it 'returns the default log object Pombo' do
+      expect(subject.logger).to be_a Pombo::Logger
+    end
+  end
 end

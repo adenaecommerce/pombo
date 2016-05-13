@@ -4,6 +4,9 @@ describe Pombo::Configuration do
   include_examples 'configuration_data'
 
   describe '.default' do
+    before { allow(Pombo::Logger).to receive(:new).and_return(spy('stdout')) }
+    subject { Pombo::Configuration.new(default_options).set_default }
+
     it 'returns a Hash object' do
       expect(subject.class.default).to be_a Hash
     end

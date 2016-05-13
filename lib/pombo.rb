@@ -2,6 +2,7 @@ require 'i18n'
 I18n.load_path += Dir[File.expand_path('../../locales/*.yml', __FILE__)]
 
 require 'pombo/version'
+require 'pombo/logger'
 require 'pombo/configuration'
 require 'pombo/exception'
 require 'pombo/support'
@@ -70,4 +71,8 @@ module Pombo
     end.first
   end
 
+  # @return [Pombo::Logger] the default log object Pombo
+  def self.logger
+    configurations.logger
+  end
 end
