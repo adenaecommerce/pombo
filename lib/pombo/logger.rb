@@ -10,7 +10,7 @@ module Pombo
     private
 
     def format_message(severity, datetime, progname, msg)
-      "#{ datetime } | POMBO | #{ progname } | #{ severity }: #{ msg }"
+      "#{ datetime } | POMBO | #{ progname } | #{ severity }: #{ msg }\n"
     end
 
   end
