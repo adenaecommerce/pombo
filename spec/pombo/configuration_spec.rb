@@ -1,6 +1,8 @@
 require 'spec_helper'
 
 describe Pombo::Configuration do
+  let(:logger){ spy('stdout') }
+
   include_examples 'configuration_data'
 
   describe '.default' do
@@ -18,6 +20,13 @@ describe Pombo::Configuration do
 
   describe '#set_default' do
     subject { Pombo::Configuration.new options }
+
+    it 'send message to log' do
+      allow(Pombo).to receive(:logger).and_return(logger)
+
+      expect(logger).to receive(:info).with('update.configuration') { 'Update the default settings' }
+      subject.set_default
+    end
 
     it 'performs a snapshot of the object and saved as default' do
       subject.set_default

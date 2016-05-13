@@ -40,6 +40,7 @@ module Pombo
       attributes = {}
       instance_variables.each{ |v| attributes[v.to_s.delete('@').to_sym] = instance_variable_get(v) }
       @@default.merge!(attributes)
+      Pombo.logger.info('update.configuration'){ 'Update the default settings' }
       self
     end
 
