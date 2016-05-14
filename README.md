@@ -8,6 +8,7 @@
 [![Inline docs](http://inch-ci.org/github/adenaecommerce/pombo.svg?branch=master)](http://inch-ci.org/github/adenaecommerce/pombo)
 [![Hex.pm](https://img.shields.io/badge/yard-docs-blue.svg)](http://www.rubydoc.info/github/adenaecommerce/pombo/master)
 [![Gem Version](https://badge.fury.io/rb/pombo.svg)](https://badge.fury.io/rb/pombo)
+[![Code Climate](https://codeclimate.com/github/adenaecommerce/pombo/badges/gpa.svg)](https://codeclimate.com/github/adenaecommerce/pombo)
 
 Pombo é uma gem que permite a utilização do webervice dos [Correios](http://correios.com.br/para-voce) para consulta de frete
 

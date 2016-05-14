@@ -67,10 +67,10 @@ module Pombo
     #   package.add_item weight: 5, length: 4, height: 3, width: 5, diameter: 0
     def add_item(item = nil, **args)
       item = if item.kind_of?(Pombo::Package::Item)
-                  item
-                else
-                  Pombo::Package::Item.new(args)
-                end
+               item
+             else
+               Pombo::Package::Item.new(args)
+             end
 
       @items << item
       update_measures
