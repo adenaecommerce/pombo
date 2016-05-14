@@ -1,4 +1,4 @@
-## v1.0.0.pre-alpha (April 6, 2016)
+## v1.0.0 (April 6, 2016)
 
 #### New features
 
@@ -8,3 +8,5 @@
 * Allows the service value of consultation
 * Allows consultation of service delivery time
 * It allows you to see the value and service delivery time
+* It supports internationalization
+* Accepts a logger compatible with the interface [Log4r](http://log4r.rubyforge.org/index.html)
