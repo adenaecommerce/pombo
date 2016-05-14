@@ -51,6 +51,7 @@ module Pombo
     end
 
     # The services used to send the package
+    # @return [Array<String>] codes services
     def services=(services)
       @services = services.kind_of?(Array) ? services : [services]
     end
@@ -62,7 +63,7 @@ module Pombo
     #   item = Pombo::Package::Item.new weight: 5, length: 4, height: 3, width: 5, diameter: 0
     #   package.add_item item
     #
-    #   # => Or
+    #   # => or
     #
     #   package.add_item weight: 5, length: 4, height: 3, width: 5, diameter: 0
     def add_item(item = nil, **args)

@@ -55,6 +55,11 @@ describe Pombo::Configuration do
           end
         end.to change(subject.class, :default).to options
       end
+
+      it 'returns a Pombo::Configuration object' do
+        settings = Proc.new { |config| config.contract_code = options[:contract_code] }
+        expect(subject.class.setup(&settings)).to eq Pombo::Configuration
+      end
     end
 
     context 'when the configuration is invalid' do

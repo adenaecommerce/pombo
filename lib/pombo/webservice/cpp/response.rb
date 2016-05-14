@@ -2,6 +2,7 @@ require 'sax-machine'
 
 module Pombo
   module Webservice
+    # Class representing the webservice for consulting services
     class CPP
       # Performs the parse of the server response
       class ParseService
@@ -15,7 +16,8 @@ module Pombo
           @http_response = http_response
         end
 
-        # @return [Array<Pombo::Webservice::CPP::ServiceResponse>]
+        # Contains services found
+        # @return [Array<Pombo::Webservice::CPP::ServiceResponse>] the services found
         def body
           response = Pombo::Webservice::CPP::ParseService.parse @http_response.body
           response.services

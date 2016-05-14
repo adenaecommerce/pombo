@@ -3,6 +3,7 @@ require 'net/http'
 
 module Pombo
   module Webservice
+    # Class contains the base to make requests
     # @abstract
     class Base
 

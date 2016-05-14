@@ -10,7 +10,8 @@
 [![Gem Version](https://badge.fury.io/rb/pombo.svg)](https://badge.fury.io/rb/pombo)
 [![Code Climate](https://codeclimate.com/github/adenaecommerce/pombo/badges/gpa.svg)](https://codeclimate.com/github/adenaecommerce/pombo)
 
-Pombo é uma gem que permite a utilização do webervice dos [Correios](http://correios.com.br/para-voce) para consulta de frete
+Pombo é uma gem que permite a utilização do webervice dos [Correios](http://correios.com.br/para-voce) para consulta de informacões
+de envio de encomendas
 
 ## Funcionalidades
 
@@ -19,18 +20,29 @@ Pombo é uma gem que permite a utilização do webervice dos [Correios](http://c
 * Permite consultar o prazo de envio de um pacote
 * Permite consultar o valor e o prazo de envio de um pacote
 * Suporta Internacionalização
+* Aceita um logger compatível com a interface do [Log4r](http://log4r.rubyforge.org/index.html)
 
 ## Instalação
 
     $ gem install pombo
 
+ou adiciona essa linha no seu Gemfile
+
+```ruby
+gem 'pombo', '~> 1.0.0.beta'
+```
+
+e
+
+    $ bundle install
+
 
 ## Configuração
 
-> Os dados retornados ao realizar uma consultas são os mesmos fornecidos em uma agência de Correios. As empresas podem contratar um
-> serviço diferenciado e usar o código do seu contrato ao utilizar o Pombo
+> Os dados retornados ao realizar uma consulta são os mesmos fornecidos em uma agência dos Correios. As empresas
+> podem contratar um serviço diferenciado e usar o código do seu contrato ao utilizar o Pombo.
 
-Para alterar as configurações default, use o `#setup`
+Para alterar as configurações padrão, utilize o `#setup`
 
 ```ruby
 Pombo.setup do |config|
@@ -38,8 +50,8 @@ Pombo.setup do |config|
   config.password = '999999'
   config.extends_delivery = 0
   config.request_timeout = 5
-  config.log_level = :info
-  config.logger = Logger.new
+  config.log_level = Pombo::Logger::INFO
+  config.logger = Pombo::Logger.new(STDOUT)
   config.locale = 'pt-BR'
 end
 ```
@@ -54,12 +66,12 @@ Pombo.set request_timeout: 10, locale: 'en'
 
 ## Formatos
 
-Os serviços são objetos pré-definidos com informações fornecidas pelo Correios
+Os formatos são objetos pré-definidos com informações fornecidas pelos Correios
+Os Correios trabalha com os seguintes formatos: caixa, envelope e rolo. Todo item deve possuir um formato.
 
-Os Correios trabalha com os sequintes formatos: caixa, envelope e rolo. Todo item deve possuir um formato. O formato do pacote é informado
-conforme os itens adicionado. Para mais de dois itens prevalece o formato caixa
+O formato do pacote é informado conforme os itens adicionado. Para mais de dois itens prevalece o formato caixa.
 
-Lista todos os formatos suportados pelos serviços de entrega
+Listar todos os formatos suportados pelos serviços de entrega
 
 ```ruby
 Pombo::Package::Format.all
@@ -70,13 +82,13 @@ Pombo::Package::Format.all
 # => ]
 ```
 
-Encontra um formato específico pelo código ou pelo nome
+Encontrar um formato específico pelo código ou pelo nome
 
 ```ruby
 Pombo::Package::Format.find '3'
 # => #<OpenStruct code=3, name="Envelope", max_length=60, min_length=16, max_width=60, min_width=11, max_weight=1>
 
-# Or
+# ou
 
 Pombo::Package::Format.find 'envelope'
 # => #<OpenStruct code=3, name="Envelope", max_length=60, min_length=16, max_width=60, min_width=11, max_weight=1>
@@ -84,39 +96,40 @@ Pombo::Package::Format.find 'envelope'
 
 ## Serviços
 
-Os serviços são objetos pré-definidos com informações fornecidas pelo Correios
+Os serviços são objetos pré-definidos com informações fornecidas pelos Correios. Para saber mais [clique aqui](http://www.correios.com.br/para-voce/envio/encomendas/encomendas)
 
-Lista todos os serviços suportados pelos serviços de entrega
+Listar todos os serviços de entrega suportados pelos Correios.
 
 ```ruby
 Pombo::Services.all
 
 # => [
-# =>    #<OpenStruct code="41106", max_weight=30, name="PAC", description="PAC (without contract)">,
+# =>    #<OpenStruct code="41106", max_weight=30, name="PAC", description="PAC (sem contrato)">,
 # =>    ....
 # => ]
 ```
 
-Lista todos os serviços de um grupo
+Listar todos os serviços de um grupo.
 
 ```ruby
 Pombo::Services.all :pac
 # => [
-# =>    #<OpenStruct code="41106", max_weight=30, name="PAC", description="PAC (without contract)">,
+# =>    #<OpenStruct code="41106", max_weight=30, name="PAC", description="PAC (sem contrato)">,
 # =>    ....
 # => ]
 ```
 
-Encontra um serviço pelo seu código
+Encontrar um serviço pelo seu código.
 
 ```ruby
 Pombo::Services.find "41106"
-# => #<OpenStruct code="41106", max_weight=30, name="PAC", description="PAC (without contract)">
+# => #<OpenStruct code="41106", max_weight=30, name="PAC", description="PAC (sem contrato)">
 ```
 
 ## Pacotes
 
-Os pacotes são os objetos enviados ao webservice para ser realizada a consulta. Ele é composto por vários items, o CEP de origem e o CEP de destino.
+Os pacotes são os objetos enviados ao webservice para que seja realizada a consulta. Ele é composto por vários
+items, o CEP de origem e o CEP de destino e alguns serviços opcionais, [veja aqui](https://www.correios.com.br/para-voce/envio/encomendas/servicos-opcionais)
 
 Criando um pacote:
 
@@ -132,6 +145,7 @@ package = Pombo::Package.new ({
 ```
 
 > Pode ser informador um array de serviços para realizar a consulta em vários serviços.
+> `Pombo::Package.new services: ["40010", "41068", "40568"]`
 
 Adicionando items:
 
@@ -178,7 +192,7 @@ Pombo.delivery_time package
 # =>  ]
 ```
 
-para realizar uma consulta para saber o valor da entrega
+Para realizar uma consulta para saber o valor da entrega
 
 ```ruby
 Pombo.shipping_value package
@@ -189,13 +203,31 @@ Pombo.shipping_value package
 
 ## Log
 
-TODO: write
+Pombo aceita qualquer sistema de logger compatível com a interface do [Log4r](http://log4r.rubyforge.org/index.html).
 
+Temos nosso próprio objeto de logger, `Pombo::Logger`, que por padrão envia as mensagens para a `STDOUT` do sistema e o nível é INFO.
 
-## Contributing
+```ruby
+Pombo.logger.info('event.namespace'){ 'Any error message' }
+# => 2016-05-13 15:15:49 -0300 | POMBO | event.namespace | INFO: Any error message
+```
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/adenaecommerce/pombo. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](http://contributor-covenant.org) code of conduct.
+Para gravar em arquivo, você pode fazer algo parecido com isso:
 
-## License
+```ruby
+Pombo.setup do |config|
+  config.log_level = Pombo::Logger::INFO
+  config.logger = Pombo::Logger.new('caminho do arquivo')
+end
+```
 
-MIT License. See the included MIT-LICENSE file.
+## Como contribuir
+
+Pombo é mantido pela time de desenvolvimento da [Adena E-commerce Platform](http://www.adena.com.br/).
+
+Relatórios de Bugs e pull requests são bem vindos no GitHub em https://github.com/adenaecommerce/pombo.
+Você pode nos enviar a sua colaboração, mas deve aderir ao código de conduta [Contributor Covenant](http://contributor-covenant.org).
+
+## Licensa
+
+MIT License. Veja o arquivo MIT-LICENSE.

@@ -3,7 +3,8 @@ require 'uri'
 module Pombo
   module Webservice
     class CPP
-      # @abstract class to create the requests for services
+      # Class to create the requests for services
+      # @abstract
       class BaseRequest
 
         def initialize(package)

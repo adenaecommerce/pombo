@@ -45,12 +45,15 @@ module Pombo
     end
 
     # Inform settings for persisting with default
-    # @see Pombo::Configuration
+    # @param [Proc] with the configuration data.
+    # @return [Pombo::Configuration] the updated settings
+    # @raise [Pombo::ConfigurationError] if not passed a block
     def self.setup(&block)
       if block_given?
         config = new
         block.call config
         config.set_default
+        self
       else
         raise Pombo::ConfigurationError, 'expected block the .setup'
       end

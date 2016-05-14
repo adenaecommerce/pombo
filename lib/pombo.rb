@@ -25,7 +25,7 @@ require 'pombo/webservice/cpp/delivery_time_request'
 module Pombo
   # Inform settings for persisting with default
   # @yield [config] with the configuration data.
-  # @return [Pombo::Configuration]
+  # @return [Pombo::Configuration] with default settings
   def self.setup(&block)
     Configuration.setup(&block)
   end
