@@ -7,7 +7,7 @@ module Pombo
     # Convert the string of Brazilian currency to float
     # @return [String] the converted string pattern R$ (unit brazilian) to pattern Float.
     # @raise [TypeError] if the value is not a String
-    # @exemple
+    # @example
     #   Pombo::Support.str_real_to_float('2,00')
     #   # => '2.00'
     def self.str_real_to_float(value)
@@ -18,7 +18,7 @@ module Pombo
     # Used to convert Boolean values to String
     # @param [Boolean] the value to be converted
     # @return [String] the string representation of a boolean. 'S' to +true+ and 'N' to +false+
-    # @exemple
+    # @example
     #   Pombo::Support.boolean_to_string(true)
     #   # => 'S'
     def self.boolean_to_string(value)

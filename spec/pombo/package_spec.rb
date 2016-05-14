@@ -2,9 +2,20 @@ require 'spec_helper'
 
 describe Pombo::Package do
   shared_examples 'updates_measures' do |property|
-    it "updates #{ property }" do
-      subject.add_item length: 1, height: 1, width: 1
-      expect{ subject.add_item(length: 1, height: 1, width: 1) }.to change(subject, property.to_sym)
+    context 'When it contains only one item' do
+      it "updates #{ property }" do
+        item = { length: 1, height: 5, width: 5 }
+        subject.add_item item
+        expect(subject.send(property)).to eq(item[property])
+      end
+    end
+
+    context 'When contain more than one item' do
+      it "updates #{ property }" do
+        subject.add_item length: 1, height: 5, width: 5
+        subject.add_item length: 2, height: 5, width: 5
+        expect(subject.send(property)).to eq(Math.cbrt(subject.volume))
+      end
     end
   end
 

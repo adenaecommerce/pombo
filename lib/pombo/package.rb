@@ -109,8 +109,12 @@ module Pombo
     private
 
     def update_measures
-      # TODO use the values of the package when there is only one
-      @length = @height = @width = Math.cbrt volume
+      if single_item?
+        item = @items.first
+        @length, @height, @width = item.length, item.height, item.width
+      else
+        @length = @height = @width = Math.cbrt volume
+      end
     end
   end
 end

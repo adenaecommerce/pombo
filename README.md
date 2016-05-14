@@ -228,6 +228,6 @@ Pombo é mantido pela time de desenvolvimento da [Adena E-commerce Platform](htt
 Relatórios de Bugs e pull requests são bem vindos no GitHub em https://github.com/adenaecommerce/pombo.
 Você pode nos enviar a sua colaboração, mas deve aderir ao código de conduta [Contributor Covenant](http://contributor-covenant.org).
 
-## Licensa
+## Licença
 
 MIT License. Veja o arquivo MIT-LICENSE.
