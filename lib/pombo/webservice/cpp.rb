@@ -7,20 +7,21 @@ module Pombo
       URL      = "#{ PROTOCOL }://#{ HOST }/calculador/CalcPrecoPrazo.asmx"
 
       def self.shipping(package)
-        url = "#{ URL }/CalcPrecoPrazo"
-        response = Response.new get(url, ShippingRequest.new(package))
-        response.body
+        resource "#{ URL }/CalcPrecoPrazo", ShippingRequest.new(package)
       end
 
       def self.delivery_time(package)
-        url = "#{ URL }/CalcPrazo"
-        response = Response.new get(url, DeliveryTimeRequest.new(package))
-        response.body
+        resource "#{ URL }/CalcPrazo", DeliveryTimeRequest.new(package)
       end
 
       def self.shipping_value(package)
-        url = "#{ URL }/CalcPreco"
-        response = Response.new get(url, ShippingValueRequest.new(package))
+        resource "#{ URL }/CalcPreco", ShippingValueRequest.new(package)
+      end
+
+      private
+
+      def self.resource(url, request)
+        response = Response.new get(url, request)
         response.body
       end
     end

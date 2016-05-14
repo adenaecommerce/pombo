@@ -8,7 +8,7 @@ module Pombo
     # @raise [TypeError] if the value is not a String
     def self.str_real_to_float(value)
       raise TypeError, "no implicit conversion of #{ value.class.name } into String" unless value.kind_of? String
-      value.gsub(',','.').to_f
+      value.tr(',','.').to_f
     end
 
     # return [String] the string representation of a boolean. 'S' to +true+ and 'N' to +false+
