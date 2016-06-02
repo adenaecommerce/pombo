@@ -8,6 +8,8 @@ module Pombo
   #   Days late on a package
   # @!attribute [rw] request_timeout
   #   Second delay when accessing the webservice
+  # @!attribute [rw] min_package
+  #   Force Pombo send at least a package of minimum dimensions of Correios
   # @!attribute [rw] log_level
   #   Level compatible with Ruby Logger
   # @!attribute [rw] logger
@@ -19,19 +21,25 @@ module Pombo
       contract_code: nil,
       password: nil,
       extends_delivery: 0,
+      min_package: true,
       log_level: Pombo::Logger::INFO,
       logger: Pombo::Logger.new(STDOUT),
       request_timeout: 5,
       locale: 'pt-BR'
     }
 
-    attr_accessor :contract_code, :password, :extends_delivery, :log_level, :logger, :request_timeout, :locale
+    attr_accessor :contract_code, :password, :extends_delivery, :log_level, :logger, :request_timeout, :locale, :min_package
 
     def initialize(**args)
       args = @@default.merge(args)
       args.each { |key, value| __send__("#{ key }=", value) }
 
       logger.level = log_level
+    end
+
+    # @return [Boolean] tells you if a package with minimum size will be sent
+    def min_package?
+      Pombo::Support::TRUE_VALUES.include? @min_package
     end
 
     # Saves the current state of the standard as an object
