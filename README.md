@@ -49,12 +49,16 @@ Pombo.setup do |config|
   config.contract_code = 'AA99BB'
   config.password = '999999'
   config.extends_delivery = 0
+  config.min_package: true
   config.request_timeout = 5
   config.log_level = Pombo::Logger::INFO
   config.logger = Pombo::Logger.new(STDOUT)
   config.locale = 'pt-BR'
 end
 ```
+
+> Os pacotes enviados pelos Correios possuem limitações de tamanho, usando a opção `min_package` você pode informar se caso o pacote não
+> atinga as dimensões mínimas, que seja realizada a cotação com os tamanhos mínimos permitidos.
 
 Se você precisar modificar qualquer configuração em um determinado momento, use o `#set`
 
