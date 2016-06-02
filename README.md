@@ -223,7 +223,7 @@ end
 
 ## Como contribuir
 
-Pombo é mantido pela time de desenvolvimento da [Adena E-commerce Platform](http://www.adena.com.br/).
+Pombo é mantido pelo time de desenvolvimento da [Adena E-commerce Platform](http://www.adena.com.br/).
 
 Relatórios de Bugs e pull requests são bem vindos no GitHub em https://github.com/adenaecommerce/pombo.
 Você pode nos enviar a sua colaboração, mas deve aderir ao código de conduta [Contributor Covenant](http://contributor-covenant.org).
