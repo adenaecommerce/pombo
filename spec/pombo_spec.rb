@@ -19,6 +19,8 @@ describe Pombo do
 
   describe '.setup' do
     it 'change the default settings by a block' do
+      allow(Pombo).to receive(:logger).and_return(spy('stdout'))
+
       expect do
         subject.setup do |config|
           config.contract_code    = options[:contract_code]
