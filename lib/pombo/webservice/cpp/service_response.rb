@@ -4,6 +4,30 @@ module Pombo
   module Webservice
     class CPP
       # Response standard for service delivery
+      # @!method [rw] code
+      #   @return [String]
+      # @!method [rw] value
+      #   @return [Float]
+      # @!method [rw] delivery_time
+      #   @return [Fixnum]
+      # @!method [rw] value_in_hand
+      #   @return [Float]
+      # @!method [rw] value_delivery_notice
+      #   @return [Float]
+      # @!method [rw] value_declared_value
+      #   @return [Float]
+      # @!method [rw] value_without_additions
+      #   @return [Float]
+      # @!method [rw] delivery_home
+      #   @return [Boolean]
+      # @!method [rw] delivery_sartuday
+      #   @return [Boolean]
+      # @!method [rw] error_code
+      #   @return [String]
+      # @!method [rw] error_message
+      #   @return [String]
+      # @!method [rw] comments
+      #   @return [String]
       class ServiceResponse
         include SAXMachine
 
@@ -11,7 +35,9 @@ module Pombo
         element :Valor, as: :value do |value|
           Pombo::Support.str_real_to_float value
         end
-        element :PrazoEntrega, as: :delivery_time
+        element :PrazoEntrega, as: :delivery_time do |value|
+          value.to_i
+        end
         element :ValorMaoPropria, as: :value_in_hand do |value|
           Pombo::Support.str_real_to_float value
         end

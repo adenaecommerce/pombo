@@ -31,7 +31,7 @@ pt-BR:
 
   webservices:
     cpp:
-      error:
+      errors:
         '0': Processamento com sucesso
         '-1': Código de serviço inválido
         '-2': CEP de origem inválido
