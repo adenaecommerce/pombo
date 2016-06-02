@@ -19,6 +19,10 @@ describe Pombo::Webservice::CPP::ServiceResponse do
       end
     end
 
+    it 'converts the delivery_time to integer' do
+      expect(service.delivery_time).to be_a(Fixnum)
+    end
+
     it 'converts the delivery_home to boolean' do
       expect(service.delivery_home).to be_a(TrueClass)
     end

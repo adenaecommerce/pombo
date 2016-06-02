@@ -79,7 +79,7 @@ describe Pombo do
   describe '.t' do
     it 'use the given locale in settings' do
       I18n.locale = :en
-      expect(subject.t('webservices.cpp.error.0')).to eq('Processamento com sucesso')
+      expect(subject.t('webservices.cpp.errors.0')).to eq('Processamento com sucesso')
     end
   end
 
