@@ -39,7 +39,7 @@ Pombo.setup do |config|
   config.contract_code = 'AA99BB'
   config.password = '999999'
   config.extends_delivery = 0
-  config.min_package: true
+  config.min_package = true
   config.request_timeout = 5
   config.log_level = Pombo::Logger::INFO
   config.logger = Pombo::Logger.new(STDOUT)
