@@ -5,6 +5,7 @@
 * It allows you to change the default settings
 * It allows you to change the runtime settings
 * Allows the creation of packages with items
+* It is used to quote a package even if it does not reach the minimum dimensions
 * Allows the service value of consultation
 * Allows consultation of service delivery time
 * It allows you to see the value and service delivery time
