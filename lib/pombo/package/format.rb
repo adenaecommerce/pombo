@@ -16,7 +16,7 @@ module Pombo
         [
           OpenStruct.new(code: 1, name: Pombo.t('formats.1'), max_length: 105, min_length: 16, max_height: 105, min_height: 2, max_width: 105, min_width: 11, max_dimension: 200),
           OpenStruct.new(code: 2, name: Pombo.t('formats.2'), max_length: 105, min_length: 18, max_diameter: 91, min_diameter: 5, max_dimension: 200),
-          OpenStruct.new(code: 3, name: Pombo.t('formats.3'), max_length: 60, min_length: 16, max_width: 60, min_width: 11, max_weight: 1),
+          OpenStruct.new(code: 3, name: Pombo.t('formats.3'), max_length: 60, min_length: 16, max_width: 60, min_width: 11, max_weight: 1)
         ]
       end
 
