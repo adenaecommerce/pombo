@@ -45,8 +45,24 @@ module Pombo
         elsif Pombo::Support::FALSE_VALUES.include? value
           instance_variable_set "@#{ method }", false
         else
-          raise TypeError, "no implicit conversion of #{ value } into True or False"
+          raise TypeError, "no implicit conversion of #{ value } into TrueClass or FalseClass"
         end
+      end
+    end
+
+    # @!method length
+    #   returns the length of the package or the format if `min_package` is true
+    # @!method height
+    #   returns the height of the package or the format if `min_package` is true
+    # @!method width
+    #   returns the width of the package or the format if `min_package` is true
+    %i[length height width].each do |method|
+      define_method("#{ method }") do
+        value = instance_variable_get("@#{ method }")
+        return value unless Pombo.configurations.min_package?
+
+        current_format = Pombo::Package::Format.find(format)
+        [value, current_format.send("min_#{ method }")].max
       end
     end
 
@@ -115,6 +131,10 @@ module Pombo
       else
         @length = @height = @width = Math.cbrt volume
       end
+    end
+
+    def min_measure_for(measure, value)
+
     end
   end
 end

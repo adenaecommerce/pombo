@@ -39,12 +39,15 @@ Pombo.setup do |config|
   config.contract_code = 'AA99BB'
   config.password = '999999'
   config.extends_delivery = 0
+  config.min_package: true
   config.request_timeout = 5
   config.log_level = Pombo::Logger::INFO
   config.logger = Pombo::Logger.new(STDOUT)
   config.locale = 'pt-BR'
 end
 ```
+> The packages sent by mail have size limitations, using the `min_package` option you can tell if the package
+> does not have the minimum dimensions, which is held to quote the permitted minimum sizes.
 
 If you need to modify some settings at a certain time, use the `#set`
 

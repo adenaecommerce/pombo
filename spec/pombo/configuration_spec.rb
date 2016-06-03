@@ -19,6 +19,20 @@ describe Pombo::Configuration do
     end
   end
 
+  describe '#min_package?' do
+    subject { Pombo::Configuration.new options }
+
+    it 'returns true when min_package is true' do
+      subject.min_package = true
+      expect(subject.min_package?).to be true
+    end
+
+    it 'returns false when min_package is false' do
+      subject.min_package = false
+      expect(subject.min_package?).to be false
+    end
+  end
+
   describe '#set_default' do
     subject { Pombo::Configuration.new options }
 
@@ -47,6 +61,7 @@ describe Pombo::Configuration do
             config.contract_code    = options[:contract_code]
             config.password         = options[:password]
             config.extends_delivery = options[:extends_delivery]
+            config.min_package      = options[:min_package]
             config.log_level        = options[:log_level]
             config.logger           = options[:logger]
             config.request_timeout  = options[:request_timeout]

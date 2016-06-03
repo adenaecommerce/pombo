@@ -33,6 +33,30 @@ describe Pombo::Package do
     end
   end
 
+  %i[length height width].each do |method|
+    describe "##{ method }" do
+      let(:measures) { { weight: 10, length: 15, height: 2, width: 10 } }
+      let(:format) { Pombo::Package::Format.find(subject.format) }
+      before { subject.add_item weight: measures[:weight] , length: measures[:length], height: measures[:height], width: measures[:width] }
+
+      context "when min_package is false" do
+        it 'returns its measures' do
+          Pombo.set min_package: false
+
+          expect(subject.send(method)).to eq(measures[method])
+        end
+      end
+
+      context "when min_package is true" do
+        it 'returns the measures of the format' do
+          Pombo.set min_package: true
+
+          expect(subject.send(method)).to eq(format.send("min_#{ method }"))
+        end
+      end
+    end
+  end
+
   describe '#services=' do
     it 'allows informing the code of a single service' do
       service_code = Pombo::Services.all(:pac).first.code
@@ -123,6 +147,8 @@ describe Pombo::Package do
   end
 
   describe '#add_item' do
+    before { Pombo.set min_package: false }
+
     it 'returns the item added' do
       expect(subject.add_item(length: 1, height: 1, width: 1)).to be_a(Pombo::Package::Item)
     end
