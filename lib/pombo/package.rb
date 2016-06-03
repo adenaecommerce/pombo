@@ -132,9 +132,5 @@ module Pombo
         @length = @height = @width = Math.cbrt volume
       end
     end
-
-    def min_measure_for(measure, value)
-
-    end
   end
 end
