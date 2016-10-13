@@ -15,6 +15,10 @@ describe Pombo::Support do
       expect(subject.str_real_to_float('2,99')).to eq(2.99)
     end
 
+    it 'converts real above thousand string to float' do
+      expect(subject.str_real_to_float('2.879,99')).to eq(2879.99)
+    end
+
     it 'throw exception if the value is not string' do
       expect { subject.str_real_to_float(2) }.to raise_error TypeError
     end
