@@ -12,7 +12,7 @@ module Pombo
     #   # => '2.00'
     def self.str_real_to_float(value)
       raise TypeError, "no implicit conversion of #{ value.class.name } into String" unless value.kind_of? String
-      value.tr(',','.').to_f
+      value.tr('.','').tr(',','.').to_f
     end
 
     # Used to convert Boolean values to String
