@@ -85,3 +85,4 @@ pt-BR:
         '011': CEP inicial e final pertencentes a Área de Risco
         '7': Serviço indisponível, tente mais tarde
         '99': Ocorreu um error no processamento
+        '999': CEP de origem inexistente, consulte o Busca CEP

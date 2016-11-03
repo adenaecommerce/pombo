@@ -85,3 +85,4 @@ en:
         '011': initial and final zip code belonging to risk area
         '7': Service unavailable, try again later
         '99': An error occurred while processing
+        '999': Source zip code does not exist, see the search CEP
