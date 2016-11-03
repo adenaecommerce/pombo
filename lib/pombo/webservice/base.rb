@@ -8,7 +8,7 @@ module Pombo
     class Base
 
       def self.get(url, request = nil)
-        Pombo.logger.info('start_request.webservice') { "GET request: #{ url }" }
+        Pombo.logger.info('start_request.webservice') { "GET request: #{ url } - Params: #{ request && request.to_hash.merge(sDsSenha: '****') }" }
         uri = URI.parse url
         uri.query = request.to_param unless request.nil?
         http_request = Net::HTTP::Get.new uri
