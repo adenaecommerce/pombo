@@ -26,9 +26,9 @@ Gem::Specification.new do |spec|
   spec.add_runtime_dependency 'sax-machine', '~> 1.3'
 
   spec.add_development_dependency 'bundler', '~> 1.11'
-  spec.add_development_dependency 'rake', '~> 11.1'
-  spec.add_development_dependency 'rspec', '~> 3.4'
-  spec.add_development_dependency 'pry', '~> 0.10.3'
-  spec.add_development_dependency 'webmock', '~> 2.0'
+  spec.add_development_dependency 'rake', '~> 11.3'
+  spec.add_development_dependency 'rspec', '~> 3.5'
+  spec.add_development_dependency 'pry', '~> 0.10'
+  spec.add_development_dependency 'webmock', '~> 2.1'
   spec.add_development_dependency 'yard', '~> 0.8.7.6'
 end
