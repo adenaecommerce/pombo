@@ -5,7 +5,7 @@ module Pombo
   #   package = Pombo::Package.new ({
   #     destination_zip_code: '29999000',
   #     origin_zip_code: '28888000',
-  #     services: "40010",
+  #     services: "04014",
   #     in_hand: false,
   #     delivery_notice: false
   #   })

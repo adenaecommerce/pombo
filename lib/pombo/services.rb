@@ -10,7 +10,7 @@ module Pombo
     # @example
     #     Pombo::Services.all
     #     # => [
-    #     # =>    #<OpenStruct code="41106", max_weight=30, name="PAC", description="PAC (without contract)">,
+    #     # =>    #<OpenStruct code="04510", max_weight=30, name="PAC", description="PAC (without contract)">,
     #     # =>    ....
     #     # => ]
     #
@@ -19,7 +19,7 @@ module Pombo
     # @example
     #     Pombo::Services.all :pac
     #     # => [
-    #     # =>    #<OpenStruct code="41106", max_weight=30, name="PAC", description="PAC (without contract)">,
+    #     # =>    #<OpenStruct code="04510", max_weight=30, name="PAC", description="PAC (without contract)">,
     #     # =>    ....
     #     # => ]
     #
@@ -39,8 +39,8 @@ module Pombo
     # Search for a service code
     # @return [OpenStruct] the data structure representing a service
     # @example
-    #     Pombo::Services.find "41106"
-    #     # => #<OpenStruct code="41106", max_weight=30, name="PAC", description="PAC (without contract)">
+    #     Pombo::Services.find "04510"
+    #     # => #<OpenStruct code="04510", max_weight=30, name="PAC", description="PAC (without contract)">
     def self.find(code)
       all_services.values_at(code).first
     end
@@ -49,7 +49,7 @@ module Pombo
 
     def self.all_pac
       {
-        "41106" => OpenStruct.new(code: "41106", max_weight: 30, name: 'PAC', description: Pombo.t('services.pac.41106')),
+        "04510" => OpenStruct.new(code: "04510", max_weight: 30, name: 'PAC', description: Pombo.t('services.pac.04510')),
         "41068" => OpenStruct.new(code: "41068", max_weight: 50, name: 'PAC', description: Pombo.t('services.pac.41068')),
         "41300" => OpenStruct.new(code: "41300", max_weight: 600, name: 'PAC GF', description: Pombo.t('services.pac.41300'))
       }
@@ -57,7 +57,7 @@ module Pombo
 
     def self.all_sedex
       {
-        "40010" => OpenStruct.new(code: "40010", max_weight: 30, name: 'SEDEX', description: Pombo.t('services.sedex.40010')),
+        "04014" => OpenStruct.new(code: "04014", max_weight: 30, name: 'SEDEX', description: Pombo.t('services.sedex.04014')),
         "40045" => OpenStruct.new(code: "40045", max_weight: 30, name: 'SEDEX a cobrar', description: Pombo.t('services.sedex.40045')),
         "40126" => OpenStruct.new(code: "40126", max_weight: 30, name: 'SEDEX a cobrar', description: Pombo.t('services.sedex.40126')),
         "40215" => OpenStruct.new(code: "40215", max_weight: 10, name: 'SEDEX 10', description: Pombo.t('services.sedex.40215')),

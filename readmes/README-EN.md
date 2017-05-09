@@ -97,7 +97,7 @@ List all formats supported by delivery services
 Pombo::Services.all
 
 # => [
-# =>    #<OpenStruct code="41106", max_weight=30, name="PAC", description="PAC (without contract)">,
+# =>    #<OpenStruct code="04510", max_weight=30, name="PAC", description="PAC (without contract)">,
 # =>    ....
 # => ]
 ```
@@ -107,7 +107,7 @@ Listing all the services of a group
 ```ruby
 Pombo::Services.all :pac
 # => [
-# =>    #<OpenStruct code="41106", max_weight=30, name="PAC", description="PAC (without contract)">,
+# =>    #<OpenStruct code="04510", max_weight=30, name="PAC", description="PAC (without contract)">,
 # =>    ....
 # => ]
 ```
@@ -115,8 +115,8 @@ Pombo::Services.all :pac
 Search for a service code
 
 ```ruby
-Pombo::Services.find "41106"
-# => #<OpenStruct code="41106", max_weight=30, name="PAC", description="PAC (without contract)">
+Pombo::Services.find "04510"
+# => #<OpenStruct code="04510", max_weight=30, name="PAC", description="PAC (without contract)">
 ```
 
 ## Packages
@@ -131,7 +131,7 @@ Creating a package:
 package = Pombo::Package.new ({
   destination_zip_code: '29160565',
   origin_zip_code: '29108046',
-  services: "40010",
+  services: "04014",
   in_hand: false,
   delivery_notice: false
 })
@@ -139,7 +139,7 @@ package = Pombo::Package.new ({
 ```
 
 > It can be informer an array of services to carry out the consultation on various services.
-> `Pombo::Package.new services: ["40010", "41068", "40568"]`
+> `Pombo::Package.new services: ["04014", "41068", "40568"]`
 
 Adding items:
 
@@ -173,7 +173,7 @@ To perform a query to know the value and the delivery
 ```ruby
 Pombo.shipping package
 # =>  [
-# =>    [0] #<Pombo::Webservice::CPP::Service:0x007fae1cd9d1a0 @code="40010", @value=31.3, @delivery_time="1", @value_in_hand=0.0, @value_delivery_notice=0.0, @value_declared_value=0.0, @error_code="0", @value_without_additions=31.3, @delivery_home=true, @delivery_sartuday=true>
+# =>    [0] #<Pombo::Webservice::CPP::Service:0x007fae1cd9d1a0 @code="04014", @value=31.3, @delivery_time="1", @value_in_hand=0.0, @value_delivery_notice=0.0, @value_declared_value=0.0, @error_code="0", @value_without_additions=31.3, @delivery_home=true, @delivery_sartuday=true>
 # =>  ]
 ```
 
@@ -182,7 +182,7 @@ To make an inquiry to find out the delivery time
 ```ruby
 Pombo.delivery_time package
 # =>  [
-# =>    [0] #<Pombo::Webservice::CPP::Service:0x007fae1da0b040 @code="40010", @delivery_time="1", @delivery_home=true, @delivery_sartuday=true>
+# =>    [0] #<Pombo::Webservice::CPP::Service:0x007fae1da0b040 @code="04014", @delivery_time="1", @delivery_home=true, @delivery_sartuday=true>
 # =>  ]
 ```
 
@@ -191,7 +191,7 @@ To perform a query to know the value of delivery
 ```ruby
 Pombo.shipping_value package
 # =>  [
-# =>    [0] #<Pombo::Webservice::CPP::Service:0x007fae1d1cb740 @code="40010", @value=31.3, @value_in_hand=0.0, @value_delivery_notice=0.0, @value_declared_value=0.0, @value_without_additions=31.3>
+# =>    [0] #<Pombo::Webservice::CPP::Service:0x007fae1d1cb740 @code="04014", @value=31.3, @value_in_hand=0.0, @value_delivery_notice=0.0, @value_declared_value=0.0, @value_without_additions=31.3>
 # =>  ]
 ```
 

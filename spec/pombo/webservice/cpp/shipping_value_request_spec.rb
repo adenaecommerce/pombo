@@ -3,7 +3,7 @@ require 'spec_helper'
 
 describe Pombo::Webservice::CPP::ShippingValueRequest do
   let(:package) do
-    package = Pombo::Package.new(destination_zip_code: '29100000', origin_zip_code:  '29200000', services: '40010')
+    package = Pombo::Package.new(destination_zip_code: '29100000', origin_zip_code:  '29200000', services: '04014')
     package.add_item weight: 5, length: 5, height: 5, width: 5
     package
   end

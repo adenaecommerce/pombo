@@ -2,11 +2,11 @@
 pt-BR:
   services:
     pac:
-      '41106': PAC (sem contrato)
+      '04510': PAC (sem contrato)
       '41068': PAC (com contrato)
       '41300': PAC (grandes formatos)
     sedex:
-      '40010': SEDEX (sem contrato)
+      '04014': SEDEX (sem contrato)
       '40045': SEDEX a cobrar (sem contrato)
       '40126': SEDEX a cobrar (com contrato)
       '40215': SEDEX 10 (sem contrato)
