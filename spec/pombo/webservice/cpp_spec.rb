@@ -5,13 +5,13 @@ describe Pombo::Webservice::CPP do
   let(:configurations) { Pombo::Configuration.new }
 
   let(:package1) do
-    package = Pombo::Package.new(destination_zip_code: '29100000', origin_zip_code:  '29200000', services: '40010')
+    package = Pombo::Package.new(destination_zip_code: '29100000', origin_zip_code:  '29200000', services: '04014')
     package.add_item weight: 5, length: 5, height: 5, width: 5
     package
   end
 
   let(:package2) do
-    package = Pombo::Package.new(destination_zip_code: '29100000', origin_zip_code:  '29200000', services: ['40010', '40020'])
+    package = Pombo::Package.new(destination_zip_code: '29100000', origin_zip_code:  '29200000', services: ['04014', '40020'])
     package.add_item weight: 5, length: 5, height: 5, width: 5
     package.add_item weight: 10, length: 10, height: 10, width: 10
     package

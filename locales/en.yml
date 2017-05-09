@@ -2,11 +2,11 @@
 en:
   services:
     pac:
-      '41106': PAC (without contract)
+      '04510': PAC (without contract)
       '41068': PAC (with contract)
       '41300': PAC (large format)
     sedex:
-      '40010': SEDEX (without contract)
+      '04014': SEDEX (without contract)
       '40045': SEDEX to charge (without contract)
       '40126': SEDEX to charge (with contract)
       '40215': SEDEX 10 (without contract)
