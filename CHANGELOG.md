@@ -1,9 +1,16 @@
+## v1.0.2
+
+#### Fix
+* Fix Correios services' codes changes
+
+
 ## v1.0.1
 
 #### Fix
 * Send to log the parameters sent to the webservice
 * Fix the method "str_real_to_float" to work with numbers above thousand
 * Add zip code not found error #999
+
 
 ## v1.0.0
 
