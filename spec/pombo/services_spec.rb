@@ -7,16 +7,16 @@ describe Pombo::Services do
     end
 
     it 'returns all services' do
-      expect(subject.all.size).to eq(19)
+      expect(subject.all.size).to eq(21)
     end
 
     context 'when a service is informed' do
       it 'returns all PAC' do
-        expect(subject.all(:pac).size).to eq(3)
+        expect(subject.all(:pac).size).to eq(4)
       end
 
       it 'returns all SEDEX' do
-        expect(subject.all(:sedex).size).to eq(10)
+        expect(subject.all(:sedex).size).to eq(11)
       end
 
       it 'returns all E-SEDEX' do
