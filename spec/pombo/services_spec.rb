@@ -7,7 +7,7 @@ describe Pombo::Services do
     end
 
     it 'returns all services' do
-      expect(subject.all.size).to eq(21)
+      expect(subject.all.size).to eq(23)
     end
 
     context 'when a service is informed' do
