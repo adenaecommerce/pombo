@@ -49,6 +49,7 @@ module Pombo
 
     def self.all_pac
       {
+        "03085" => OpenStruct.new(code: "03085", max_weight: 50, name: 'PAC', description: Pombo.t('services.pac.03085')),
         "04510" => OpenStruct.new(code: "04510", max_weight: 30, name: 'PAC', description: Pombo.t('services.pac.04510')),
         "04669" => OpenStruct.new(code: "04669", max_weight: 30, name: 'PAC', description: Pombo.t('services.pac.04669')),
         "41068" => OpenStruct.new(code: "41068", max_weight: 50, name: 'PAC', description: Pombo.t('services.pac.41068')),
@@ -58,6 +59,7 @@ module Pombo
 
     def self.all_sedex
       {
+        "03050" => OpenStruct.new(code: "03050", max_weight: 30, name: 'SEDEX', description: Pombo.t('services.sedex.03050')),
         "04014" => OpenStruct.new(code: "04014", max_weight: 30, name: 'SEDEX', description: Pombo.t('services.sedex.04014')),
         "04162" => OpenStruct.new(code: "04162", max_weight: 30, name: 'SEDEX', description: Pombo.t('services.sedex.04162')),
         "40045" => OpenStruct.new(code: "40045", max_weight: 30, name: 'SEDEX a cobrar', description: Pombo.t('services.sedex.40045')),
